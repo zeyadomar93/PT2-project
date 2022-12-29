@@ -1,5 +1,5 @@
 #include "point.hpp"
-#include "room.hpp"
+#include "display.hpp"
 
 #ifndef BALL_H
 #define BALL_H
@@ -15,10 +15,10 @@ private:
 	int size;		// For the dimension purposes
 	int color;		// For appearance purposes
 	int dx, dy;		// For movement purposes. The speed and direction
-	Room *room;
+	Display *room;
 
 public:
-	Ball(Point _location = Point(0, 0), int _size = 50, int _color = 15, int _dx = 0, int _dy = 0, Room *_room = NULL);
+	Ball(Point _location = Point(0, 0), int _size = 50, int _color = 15, int _dx = 0, int _dy = 0, Display *_room = NULL);
 	Ball(int _x = 0, int _y = 0, int _size = 50, int _color = 15, int _dx = 0, int _dy = 0);
 
 	Point getLocation() const;
@@ -30,10 +30,10 @@ public:
 	int getRight() const;  // To get the right most  x of the circle
 	int getTop() const;	   // To get the top most  y of the circle
 	int getBottom() const; // To get the bottom most  y of the circle
-	Room *getRoom() const;
-	void setRoom(Room *_room);
+	Display *getDisplay() const;
+	void setDisplay(Display *_room);
 
-	int getRoomColor() const;
+	int getDisplayColor() const;
 	Point getCenter() const;
 
 	void setLocation(Point value);

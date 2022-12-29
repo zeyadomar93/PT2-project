@@ -1,17 +1,17 @@
-#ifndef ROOM_H
-#define ROOM_H
+#ifndef DISPLAY_H
+#define DISPLAY_H
 
 #include "point.hpp"
 
-class Room
+class Display
 {
 private:
 	int x, y;		   // The center coordinates. For specifing the location of the ball
 	int width, height; // For the dimension purposes
-	int color;		   // For appearance purposes
+	int color;		   // FoSr appearance purposes
 
 public:
-	Room(int _x = 0, int _y = 0, int _width = 0, int _height = 0, int _color = 0);
+	Display(int _x = 0, int _y = 0, int _width = 0, int _height = 0, int _color = 0);
 
 	int getX() const; // The left most x value of the room
 	int getY() const; // The top most y value of the room

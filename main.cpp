@@ -5,7 +5,7 @@
 
 #include <graphics.h>
 #include "ball.hpp"
-#include "room.hpp"
+#include "display.hpp"
 
 // Task 5:
 //    Review the main function before running.
@@ -15,13 +15,13 @@ int main()
 	int screenWidth = getmaxwidth();
 	int screenHeight = getmaxheight();
 
-	Room *room;
+	Display *room;
 
 	initwindow(screenWidth, screenHeight, "Tutorial 7-Associations");
 
-	Room rooms[] = {
-		Room(0, 0, screenWidth / 2, screenHeight, COLOR(255, 0, 0)),
-		Room(screenWidth / 2, 0, screenWidth / 2, screenHeight, COLOR(0, 0, 255))};
+	Display rooms[] = {
+		Display(0, 0, screenWidth / 2, screenHeight, COLOR(255, 0, 0)),
+		Display(screenWidth / 2, 0, screenWidth / 2, screenHeight, COLOR(0, 0, 255))};
 
 	Ball balls[] = {
 		Ball(Point(100, screenHeight / 4), 100, YELLOW, 50, 50),
@@ -31,8 +31,8 @@ int main()
 	balls[0].setLocation(p);
 	balls[1].setLocation(p);
 
-	balls[0].setRoom(rooms);
-	balls[1].setRoom(rooms);
+	balls[0].setDisplay(rooms);
+	balls[1].setDisplay(rooms);
 
 	for (int r = 0; r < 2; r++)
 		rooms[r].draw();

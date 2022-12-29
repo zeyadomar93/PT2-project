@@ -8,7 +8,7 @@
 
 // The definition for this constructor has been given.
 // Review the code.
-Ball::Ball(Point _location, int _size, int _color, int _dx, int _dy, Room *_room)
+Ball::Ball(Point _location, int _size, int _color, int _dx, int _dy, Display *_room)
 {
 	set(_location, _size, _color, _dx, _dy);
 	room = _room;
@@ -123,8 +123,8 @@ void Ball::move()
 	draw();
 }
 
-Room *Ball::getRoom() const { return room; }
-void Ball::setRoom(Room *_room) { room = _room; }
+Display *Ball::getDisplay() const { return room; }
+void Ball::setDisplay(Display *_room) { room = _room; }
 
 // int Ball::getRoomColor()
 // {
