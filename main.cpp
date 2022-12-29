@@ -1,85 +1,52 @@
+// Programming Technique II (SCSJ1023)
+// Semester 1, 2018/2019
+
+// ? Tutorial 7: Associations, Aggregation and Composition
+
 #include <graphics.h>
+#include "ball.hpp"
+#include "room.hpp"
 
-class Ball
-{
-private:
-    // attributes or member variables
-    // location, size, presentation
-    int x, y;
-    int size;
-    int color;
-
-public:
-    // methods or member functions
-    // constructor, accesor (getter), mutator (setter), destructor
-
-    Ball(int _x, int _y, int _size, int _color = WHITE) : x(_x), y(_y), size(_size), color(_color) {}
-
-    int getX() const { return x; }
-
-    int left() const { return x - size; }
-    void left(int l) { x = l + size; }
-    int right() const { return x + size; }
-
-    int getY() const { return y; }
-    void setY(int value) { y = value; }
-    void setColor(int value) { color = value; }
-
-    // DRY vs WET code
-
-    void _draw(int c) const
-    {
-        setcolor(c);
-        setfillstyle(SOLID_FILL, c);
-        fillellipse(x, y, size, size);
-    }
-
-    void draw() const { _draw(color); }
-    void undraw() const { _draw(BLACK); }
-
-    void moveTo(int _x, int _y)
-    {
-        x = _x;
-        y = _y;
-    }
-
-    void moveBy(int dx, int dy)
-    {
-        x += dx;
-        y += dy;
-    }
-};
+// Task 5:
+//    Review the main function before running.
 
 int main()
 {
-    int screenWidth = getmaxwidth();
-    int screenHeight = getmaxheight();
-    char key = 0;
+	int screenWidth = getmaxwidth();
+	int screenHeight = getmaxheight();
 
-    initwindow(screenWidth, screenHeight, "Simple Animation");
+	Room *room;
 
-    Ball b(screenWidth / 2, screenHeight / 2, 100, COLOR(255, 0, 0));
+	initwindow(screenWidth, screenHeight, "Tutorial 7-Associations");
 
-    b.draw();
+	Room rooms[] = {
+		Room(0, 0, screenWidth / 2, screenHeight, COLOR(255, 0, 0)),
+		Room(screenWidth / 2, 0, screenWidth / 2, screenHeight, COLOR(0, 0, 255))};
 
-    while (key != 27) // 27 is the ASCII code for key Esc
-    {
-        if (kbhit())
-        {
-            key = getch();
+	Ball balls[] = {
+		Ball(Point(100, screenHeight / 4), 100, YELLOW, 50, 50),
+		Ball(Point(100, screenHeight / 4), 150, RED, 50, -100)};
 
-            if (key == 0) // special keys like arrow keys need to call to getch() twice.
-                key = getch();
+	Point p = rooms[0].getCenter();
+	balls[0].setLocation(p);
+	balls[1].setLocation(p);
 
-            switch (toupper(key))
-            {
-            case 'W':
-                b.undraw();
-                b.setColor(WHITE);
-                b.draw();
-                break;
-            }
-        }
-    }
-    return 0;
+	balls[0].setRoom(rooms);
+	balls[1].setRoom(rooms);
+
+	for (int r = 0; r < 2; r++)
+		rooms[r].draw();
+
+	for (int b = 0; b < 2; b++)
+		balls[b].draw();
+
+	while (!kbhit())
+	{
+		delay(125);
+
+		for (int b = 0; b < 2; b++)
+			balls[b].move();
+	}
+
+	return 0;
 }
