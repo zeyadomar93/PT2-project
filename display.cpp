@@ -40,8 +40,18 @@ void Display::set(int _x, int _y, int _width, int _height, int _color)
 
 void Display::draw() const
 {
-	setfillstyle(SOLID_FILL, color);
-	bar(x, y, x + width, y + height);
+	// setfillstyle(SOLID_FILL, color);
+	// bar(x, y, x + width, y + height);
+		readimagefile("highres2.jpg",0,0,1380,750);
+}
+void Display::drawLife(int life) const
+{
+	// setfillstyle(SOLID_FILL, color);
+	// bar(x, y, x + width, y + height);
+	for(int i=0;i<life;i++){
+
+		readimagefile("highres2.jpg",0,200,200,0);
+	}
 }
 
 Point Display::getCenter() const { return Point(x + width / 2, y + height / 2); }

@@ -1,11 +1,8 @@
-// Programming Technique II (SCSJ1023)
-// Semester 1, 2018/2019
-
-// ? Tutorial 7: Associations, Aggregation and Composition
 
 #include <graphics.h>
 #include "ball.hpp"
 #include "display.hpp"
+#include "life.hpp"
 
 // Task 5:
 //    Review the main function before running.
@@ -18,7 +15,10 @@ int main()
 	Display *room;
 
 	initwindow(screenWidth, screenHeight, "Group ERD");
-	readimagefile("highres2.jpg",0,0,1380,750);
+Display display;
+Life life(3);
+display.drawLife(life.display_life());
+// display.draw();
 
 	// Display rooms[] = {
 	// 	// Display(0, 0, screenWidth / 2, screenHeight, COLOR(255, 0, 0)),

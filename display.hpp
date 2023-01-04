@@ -31,6 +31,7 @@ public:
 	Point getCenter() const;
 
 	void draw() const;
+	void drawLife(int life) const;
 };
 
 #endif
