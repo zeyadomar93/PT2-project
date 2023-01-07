@@ -42,7 +42,7 @@ void Display::draw() const
 {
 	// setfillstyle(SOLID_FILL, color);
 	// bar(x, y, x + width, y + height);
-		readimagefile("highres2.jpg",0,0,1380,750);
+		readimagefile("images/highres2.jpg",0,0,1380,750);
 }
 void Display::drawLife(int life) const
 {
@@ -50,7 +50,7 @@ void Display::drawLife(int life) const
 	// bar(x, y, x + width, y + height);
 	for(int i=0;i<life;i++){
 
-		readimagefile("highres2.jpg",0,200,200,0);
+		readimagefile("images/highres2.jpg",0,200,200,0);
 	}
 }
 

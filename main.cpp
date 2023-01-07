@@ -3,14 +3,15 @@
 #include "display.hpp"
 #include "life.hpp"
 
+// sample menu
 void menu(int boxColor, int textColor){
     setcolor(boxColor);
     for(int i=0; i<10; i++)
-        rectangle(55-1, 75-i, 240+i, 215+i)
+        rectangle(55-1, 75-i, 240+i, 215+i);
 
     setcolor(textColor);
     settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 4);
-    outtextxy(240, 200, "PLAY GAME");
+    outtextxy(240, 200, "PLAYGAME");
 }
 
 
@@ -27,21 +28,18 @@ int main()
 	display.draw();
 	// display.drawLife(life.display_life());
 
-	while (!kbhit())
-        {
+	while (!kbhit()){
+        delay(10000);
+    }
+    int key;
+    key = getch();
 
-delay(10000);
+    if (key == 0) 
+        key = getch();
+    switch (toupper(key))
+    {
+    case 'q':
 
-        }
-			int key;
-            key = getch();
-
-            if (key == 0) 
-                key = getch();
-            switch (toupper(key))
-            {
-            case 'q':
-
-                break;
-            }
+        break;
+    }
 }
