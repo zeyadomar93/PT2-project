@@ -12,7 +12,7 @@ class Display
 private:
 	int x, y;		   // The center coordinates. For specifing the location of the ball
 	int width, height; // For the dimension purposes
-	int color;		   // FoSr appearance purposes
+	int color;		   // For appearance purposes
 
 public:
 	Display(int _x = 0, int _y = 0, int _width = 0, int _height = 0, int _color = 0);
