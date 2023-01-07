@@ -3,6 +3,17 @@
 #include "display.hpp"
 #include "life.hpp"
 
+void menu(int boxColor, int textColor){
+    setcolor(boxColor);
+    for(int i=0; i<10; i++)
+        rectangle(55-1, 75-i, 240+i, 215+i)
+
+    setcolor(textColor);
+    settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 4);
+    outtextxy(240, 200, "PLAY GAME");
+}
+
+
 int main()
 {
 	int screenWidth = getmaxwidth();
