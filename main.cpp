@@ -26,8 +26,13 @@ int main()
 	initwindow(screenWidth, screenHeight, "Group ERD");
 	Display display;
 	Life life(3);
-	display.draw("images/highres2.jpg");
-	// display.drawLife(life.display_life());
+
+	display.draw("images/highres2.jpg", 0, 0, 1380, 750);
+
+    // sample to display lives
+    // corporate array to display it
+    for(int i=0; i<life.display_life(); i++)
+        display.draw("images/highres2.jpg",0,200,200,0);
 
 	while (!kbhit()){
         delay(10000);

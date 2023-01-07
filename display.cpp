@@ -42,20 +42,9 @@ void Display::set(int _x, int _y, int _width, int _height, int _color)
 	color = _color;
 }
 
-void Display::draw(string photo) const
+void Display::draw(string photo, int _left, int _top, int _right, int _bottom) const
 {
-	// setfillstyle(SOLID_FILL, color);
-	// bar(x, y, x + width, y + height);
-	readimagefile(photo.c_str(), 0, 0, 1380, 750);
-}
-void Display::drawLife(int life) const
-{
-	// setfillstyle(SOLID_FILL, color);
-	// bar(x, y, x + width, y + height);
-	for(int i=0;i<life;i++){
-
-		readimagefile("images/highres2.jpg",0,200,200,0);
-	}
+	readimagefile(photo.c_str(), _left, _top, _right, _bottom);
 }
 
 Point Display::getCenter() const { return Point(x + width / 2, y + height / 2); }
