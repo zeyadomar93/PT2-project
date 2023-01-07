@@ -23,7 +23,7 @@ void Hammer::mouseInput(Point &cp){
 
 // make hammer follow cursor
 void Hammer::displayHammer(){
-    readimagefile(photo.c_str(), 0, 0, 1380, 750);
+    //readimagefile(photo.c_str(), 0, 0, 1380, 750);
     circle(cursorPosition.getX(), cursorPosition.getY(), 50);
 }
 

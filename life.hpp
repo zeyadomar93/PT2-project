@@ -9,7 +9,6 @@ private:
 
 public:
     Life(int initial_life);
-    // int getLife() const;
     void decrease_life();
     int display_life();
 

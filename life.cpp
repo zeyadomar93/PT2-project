@@ -9,10 +9,6 @@ Life::Life(int initial_life)
     life = initial_life;
 }
 
-// int Life::getLife() const{
-//     return life;
-// }
-
 void Life::decrease_life()
 {
     life -= initial_life;
