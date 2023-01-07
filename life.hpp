@@ -1,4 +1,5 @@
-// #include "display.hpp"
+#ifndef LIFE_H
+#define LIFE_H
 
 class Life
 {
@@ -7,22 +8,14 @@ private:
     int initial_life = 3;
 
 public:
-    Life(int initial_life)
-    {
-        life = initial_life;
-    }
+    Life(int initial_life);
+    // int getLife() const;
+    void decrease_life();
+    int display_life();
 
-    void decrease_life()
-    {
-        life -= initial_life;
-    }
-
-    // method to display the current value of the life attribute
-    int display_life()
-    {
-        return life;
-    }
 };
+
+#endif
 
 // Life player_life(3);
 // player_life.decrease_life();  // decrease the player's life by 1
