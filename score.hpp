@@ -8,17 +8,17 @@ using namespace std;
 
 class Score{
     private:
-        int score;
+        int score[3] = {1, 3, 5};
         int totalScore;
 
         // Life lives;
 
     public:
-        Score(int _score = 0);
-        void initState(int _score, int _totalScore){}
-        int update() const{}
-        int getScore() const{}
-        void reset(int _score){}
+        Score(int _totalScore = 0);
+        void initState();
+        int update();
+        int getTotalScore() const;
+        void reset();
 };
 
 #endif

@@ -16,12 +16,12 @@ class Timer{
 
     public:
         Timer(int _min = 0, int _sec = 0);
-        void initState(int _min, int _sec){}
-        int update() const{}
-        void displayTimer(int timerColor){}
-        int stop() const{}
+        void initState(int _min, int _sec);
+        int update(int _min, int _sec);
+        void displayTimer(int timerColor);
+        int stop() const;
         // int stop(Life _lives) const{}
-        void reset(int _time){}
+        Timer reset();
 };
 
 #endif
