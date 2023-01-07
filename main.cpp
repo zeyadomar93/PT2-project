@@ -32,7 +32,7 @@ int main()
     // sample to display lives
     // corporate array to display it
     for(int i=0; i<life.display_life(); i++)
-        display.draw("images/highres2.jpg",0,200,200,0);
+        display.draw("images/heart.png",0,200,200,0);
 
 	while (!kbhit()){
         delay(10000);

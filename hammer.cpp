@@ -23,8 +23,8 @@ void Hammer::mouseInput(Point &cp){
 
 // make hammer follow cursor
 void Hammer::displayHammer(){
-    //readimagefile(photo.c_str(), 0, 0, 1380, 750);
-    circle(cursorPosition.getX(), cursorPosition.getY(), 50);
+    // display.draw(photo.c_str(), 0, 0, cursorPosition.getX(), cursorPosition.getY());
+    // circle(cursorPosition.getX(), cursorPosition.getY(), 50);
 }
 
 // check if hammer hits a mole or not
