@@ -6,56 +6,56 @@ using namespace std;
 #include "timer.hpp"
 
 // sample variable
-int gameStart = 0;
-int lives = 3;
+bool gameStart = false;
 
 Timer::Timer(int _min, int _sec):min(_min), sec(_sec){}
 
-void initState(int _min, int _sec){
-    while(gameStart = 0){
+void Timer::initState(int _min, int _sec){
+    min = _min;
+    sec = _sec;
+
+    while(gameStart == true){
         delay(1000);
 
-        if(_min == 0 && _sec == 0)
+        if(min == 0 && sec == 0)
             break;
 
-        if(_sec == 0){
-            _sec = 60;
-            _min--;
+        if(sec == 0){
+            sec = 60;
+            min--;
         }
 
-        _sec--;
+        sec--;
     }
-
-    // go to game over once done
 }
 
 void Timer::displayTimer(int timerColor){
     setcolor(timerColor);
     settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 4);
-    outtextxy(200, 100, "Min");
+    outtextxy(200, 100, min);
 
     setcolor(timerColor);
     settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 4);
-    outtextxy(200, 100, "Sec");
+    outtextxy(200, 100, sec);
 }
 
-int Timer::update(int _min, int _sec){
-    if(_min == 1)
-        displayTimer(GREEN);
-    else if(_min == 0 && _sec >= 45)
+void Timer::update(){
+    if(sec < 45)
+        displayTimer(RED);
+    else if(min == 1 && sec >= 45)
         displayTimer(YELLOW);
     else
-        displayTimer(RED);
+        displayTimer(GREEN);
 }
 
-/*int stop() const{
-    if(lives = 0){
+void Timer::stop() const{
+    if(lives == 0){
+        Time.timeScale = 0;
 
+        delay(1000);
+        // call game over layout
     }
-        
-        break;
-        // stop timer, go to game over
-}*/
+}
 
 Timer Timer::reset(){
     Timer time;

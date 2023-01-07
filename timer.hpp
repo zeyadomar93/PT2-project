@@ -4,23 +4,22 @@
 #include <string>
 using namespace std;
 
-// class Life;
+#include "life.hpp"
 
 class Timer{
     private:
         int min;
         int sec;
-
         int timerColor;
-        // Life lives;
+
+        Life lives;
 
     public:
         Timer(int _min = 0, int _sec = 0);
         void initState(int _min, int _sec);
-        int update(int _min, int _sec);
         void displayTimer(int timerColor);
-        int stop() const;
-        // int stop(Life _lives) const{}
+        void update();
+        void stop() const;
         Timer reset();
 };
 
