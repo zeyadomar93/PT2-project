@@ -6,10 +6,6 @@ using namespace std;
 #include "display.hpp"
 #include "point.hpp"
 
-// Task 4:
-//    Declaration and definition for this class have been given.
-//    Review all the methods of this class.
-
 Display::Display(int _x, int _y, int _width, int _height, int _color)
 {
 	set(_x, _y, _width, _height, _color);
@@ -32,7 +28,9 @@ void Display::setSize(int _width, int _height)
 	width = _width;
 	height = _height;
 }
+
 void Display::setColor(int value) { color = value; }
+
 void Display::set(int _x, int _y, int _width, int _height, int _color)
 {
 	x = _x;

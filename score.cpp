@@ -1,7 +1,3 @@
-#include <iostream>
-#include <string>
-using namespace std;
-
 #include "score.hpp"
 #include "hammer.hpp"
 
@@ -15,7 +11,6 @@ void Score::initState(){
 }
 
 int Score::update(){
-
     int _speed = hammer.getSpeed();
 
     if(hammer.smash() == false)
@@ -32,7 +27,7 @@ int Score::update(){
 
 int Score::getTotalScore() const{ return totalScore; }
 
-// same content as init
+// TODO: remove if not needed
 void Score::reset(){
     totalScore = 0;
 }

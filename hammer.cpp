@@ -32,14 +32,9 @@ void Hammer::displayHammer(){
 // and see if the moles are visible or not
 bool Hammer::smash(){
     // if(GetAsyncKeyState(VK_LBUTTON)){
-    //     if(isHit == true){
-    //         return 
-    //     }
-    // }
 
-    // getmouseclick(WM_LBUTTONDOWN, x, y)
+    //     getmouseclick(WM_LBUTTONDOWN, x, y)
 
-    // if(GetAsyncKeyState(VK_LBUTTON)){
     //     if(isMoleUp == true)
     //         return isHit = true;
     //     else
@@ -47,7 +42,6 @@ bool Hammer::smash(){
     // }
 
     return isHit = false;
-
 }
 
 int Hammer::getSpeed() const{ return speed; }

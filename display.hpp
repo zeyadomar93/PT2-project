@@ -32,10 +32,9 @@ public:
 	void setSize(int _width, int _height);
 	void setColor(int value);
 	void set(int _x, int _y, int _width, int _height, int _color);
-	Point getCenter() const;
-
 	void draw(string photo, int _left, int _top, int _right, int _bottom) const;
-	void drawLife(int life) const;
+
+	Point getCenter() const;
 };
 
 #endif

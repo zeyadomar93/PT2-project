@@ -55,6 +55,7 @@ void Timer::update(){
         displayTimer(GREEN);
 }
 
+// TODO: stop timer and go to gameover
 void Timer::stop() const{
     if(lives->display_life() == 0){
         // Time.timeScale = 0;
@@ -64,6 +65,7 @@ void Timer::stop() const{
     }
 }
 
+// TODO: remove if unnecessary
 Timer Timer::reset(){
     Timer time;
     time.min = 1;

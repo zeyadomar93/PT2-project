@@ -11,6 +11,7 @@ public:
 
 	int getX() const;
 	int getY() const;
+	
 	void setX(int value);
 	void setY(int value);
 	void set(int _x, int _y);

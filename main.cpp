@@ -1,9 +1,8 @@
-
 #include <graphics.h>
 #include "display.hpp"
 #include "life.hpp"
 
-// sample menu
+// TODO: display menu
 void menu(int boxColor, int textColor){
     setcolor(boxColor);
     for(int i=0; i<10; i++)
@@ -15,37 +14,43 @@ void menu(int boxColor, int textColor){
 
 }
 
+// TODO: display gameplay
+void gameplay(){
+
+    Life life(3);
+
+    // sample to display lives
+    // TODO: corporate array to display it 
+    // for(int i=0; i<life.display_life(); i++)
+    //     display.draw("images/heart.png",0,200,200,0);
+
+}
+
+// TODO: diplay gameover
+void gameover(){
+
+}
 
 int main()
 {
 	int screenWidth = getmaxwidth();
 	int screenHeight = getmaxheight();
-
-	// Display *room;
+    int key;
 
 	initwindow(screenWidth, screenHeight, "Group ERD");
 	Display display;
-	Life life(3);
 
 	display.draw("images/highres2.jpg", 0, 0, 1380, 750);
-
-    // sample to display lives
-    // corporate array to display it
-    for(int i=0; i<life.display_life(); i++)
-        display.draw("images/heart.png",0,200,200,0);
 
 	while (!kbhit()){
         delay(10000);
     }
-    int key;
-    key = getch();
 
     if (key == 0) 
         key = getch();
-    switch (toupper(key))
-    {
-    case 'q':
-
+    
+    switch (toupper(key)){
+        case 'q':
         break;
     }
 }
