@@ -1,17 +1,16 @@
 #ifndef SCORE_H
 #define SCORE_H
 
-#include <string>
-using namespace std;
+// #define MAX_SCORE 7
 
-#define MAX_SCORE 7
+#include "hammer.hpp"
 
 class Score{
     private:
         int score[3] = {1, 3, 5};
         int totalScore;
 
-        // Life lives;
+        Hammer hammer;
 
     public:
         Score(int _totalScore = 0);

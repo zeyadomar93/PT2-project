@@ -1,4 +1,8 @@
 #include <graphics.h>
+#include <string>
+
+using namespace std;
+
 #include "display.hpp"
 #include "point.hpp"
 
@@ -38,11 +42,11 @@ void Display::set(int _x, int _y, int _width, int _height, int _color)
 	color = _color;
 }
 
-void Display::draw() const
+void Display::draw(string photo) const
 {
 	// setfillstyle(SOLID_FILL, color);
 	// bar(x, y, x + width, y + height);
-		readimagefile("images/highres2.jpg",0,0,1380,750);
+	readimagefile(photo.c_str(), 0, 0, 1380, 750);
 }
 void Display::drawLife(int life) const
 {

@@ -1,6 +1,10 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
+#include <string>
+
+using namespace std;
+
 #include "point.hpp"
 
 class Display
@@ -30,7 +34,7 @@ public:
 	void set(int _x, int _y, int _width, int _height, int _color);
 	Point getCenter() const;
 
-	void draw() const;
+	void draw(string photo) const;
 	void drawLife(int life) const;
 };
 

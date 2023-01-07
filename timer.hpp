@@ -12,10 +12,10 @@ class Timer{
         int sec;
         int timerColor;
 
-        Life lives;
+        Life *lives;
 
     public:
-        Timer(int _min = 0, int _sec = 0);
+        Timer(int _min = 0, int _sec = 0, int timerColor = 0);
         void initState(int _min, int _sec);
         void displayTimer(int timerColor);
         void update();

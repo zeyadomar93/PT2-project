@@ -12,6 +12,7 @@ void menu(int boxColor, int textColor){
     setcolor(textColor);
     settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 4);
     outtextxy(240, 200, "PLAYGAME");
+
 }
 
 
@@ -25,7 +26,7 @@ int main()
 	initwindow(screenWidth, screenHeight, "Group ERD");
 	Display display;
 	Life life(3);
-	display.draw();
+	display.draw("images/highres2.jpg");
 	// display.drawLife(life.display_life());
 
 	while (!kbhit()){

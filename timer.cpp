@@ -8,11 +8,14 @@ using namespace std;
 // sample variable
 bool gameStart = false;
 
-Timer::Timer(int _min, int _sec):min(_min), sec(_sec){}
+Timer::Timer(int _min, int _sec, int _timerColor):
+    min(_min), sec(_sec), timerColor(_timerColor), lives(nullptr){}
 
 void Timer::initState(int _min, int _sec){
     min = _min;
     sec = _sec;
+    // elapsedTime
+    // sec = _sec * Time.deltaTime;
 
     while(gameStart == true){
         delay(1000);
@@ -30,13 +33,17 @@ void Timer::initState(int _min, int _sec){
 }
 
 void Timer::displayTimer(int timerColor){
-    setcolor(timerColor);
-    settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 4);
-    outtextxy(200, 100, min);
+
+    string smin = to_string(min);
+    string ssec = to_string(sec);
 
     setcolor(timerColor);
     settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 4);
-    outtextxy(200, 100, sec);
+    // outtextxy(200, 100, smin.c_str());
+
+    setcolor(timerColor);
+    settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 4);
+    // outtextxy(200, 100, sec);
 }
 
 void Timer::update(){
@@ -49,8 +56,8 @@ void Timer::update(){
 }
 
 void Timer::stop() const{
-    if(lives == 0){
-        Time.timeScale = 0;
+    if(lives->display_life() == 0){
+        // Time.timeScale = 0;
 
         delay(1000);
         // call game over layout

@@ -1,7 +1,6 @@
-// Task 1:
-//    Declaration and definition for this class have been given.
-//    Review all the methods of this class.
-//    Question: what is the difference between the methods set and move
+#include <iostream>
+#include <string>
+using namespace std;
 
 #include "point.hpp"
 
