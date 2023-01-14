@@ -45,4 +45,10 @@ void Display::draw(string photo, int _left, int _top, int _right, int _bottom) c
 	readimagefile(photo.c_str(), _left, _top, _right, _bottom);
 }
 
+// void Display::text(int _x, int _y, char *textstring, int timerColor){
+// 	setcolor(timerColor);
+//     settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 4);
+//     outtextxy(_x, _y, textstring);
+// }
+
 Point Display::getCenter() const { return Point(x + width / 2, y + height / 2); }

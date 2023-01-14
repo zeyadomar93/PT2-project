@@ -17,7 +17,7 @@ class Score{
         void initState();
         int update();
         int getTotalScore() const;
-        void reset();
+        void displayScore();
 };
 
 #endif

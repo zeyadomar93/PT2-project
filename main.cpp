@@ -1,6 +1,8 @@
 #include <graphics.h>
 #include "display.hpp"
 #include "life.hpp"
+#include "timer.hpp"
+#include "score.hpp"
 
 // TODO: display menu
 void menu(int boxColor, int textColor){
@@ -10,7 +12,7 @@ void menu(int boxColor, int textColor){
 
     setcolor(textColor);
     settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 4);
-    outtextxy(240, 200, "PLAYGAME");
+    outtextxy(240, 200, "PLAY GAME");
 
 }
 
@@ -38,9 +40,20 @@ int main()
     int key;
 
 	initwindow(screenWidth, screenHeight, "Group ERD");
-	Display display;
+	
+    Display display;
+    Timer timer;
+    Score score;
 
 	display.draw("images/highres2.jpg", 0, 0, 1380, 750);
+    // display.draw("images/sand-clock.png", 30, 0, 20, 20);
+
+    // test score
+    score.displayScore();
+
+    // test timer
+    timer.initState(1, 30);
+    timer.update();
 
 	while (!kbhit()){
         delay(10000);

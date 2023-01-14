@@ -1,3 +1,5 @@
+#include <graphics.h>
+
 #include "score.hpp"
 #include "hammer.hpp"
 
@@ -25,9 +27,13 @@ int Score::update(){
     }
 }
 
-int Score::getTotalScore() const{ return totalScore; }
+void Score::displayScore(){
+    char buffer[10];
 
-// TODO: remove if not needed
-void Score::reset(){
-    totalScore = 0;
+    setcolor(WHITE);
+    settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 4);
+    sprintf(buffer, "SCORE %d", totalScore);
+    outtextxy(20, 20, buffer);
 }
+
+int Score::getTotalScore() const{ return totalScore; }
