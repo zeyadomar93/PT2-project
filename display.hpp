@@ -7,12 +7,22 @@ using namespace std;
 
 #include "point.hpp"
 
+// #include "timer.hpp"
+// #include "score.hpp"
+// #include "life.hpp"
+// #include "characters.hpp"
+
 class Display
 {
 private:
 	int x, y;		   // The center coordinates. For specifing the location of the ball
 	int width, height; // For the dimension purposes
 	int color;		   // For appearance purposes
+
+	// Timer _timer;
+	// Score _score;
+	// Life _life;
+	// Characters _char;
 
 public:
 	Display(int _x = 0, int _y = 0, int _width = 0, int _height = 0, int _color = 0);
@@ -33,6 +43,8 @@ public:
 	void setColor(int value);
 	void set(int _x, int _y, int _width, int _height, int _color);
 	void draw(string photo, int _left, int _top, int _right, int _bottom) const;
+
+	void playerBoard();
 
 	Point getCenter() const;
 };

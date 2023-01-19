@@ -6,6 +6,11 @@ using namespace std;
 #include "display.hpp"
 #include "point.hpp"
 
+// #include "score.hpp"
+// #include "timer.hpp"
+// #include "life.hpp"
+// #include "characters.hpp"
+
 Display::Display(int _x, int _y, int _width, int _height, int _color)
 {
 	set(_x, _y, _width, _height, _color);
@@ -44,6 +49,9 @@ void Display::draw(string photo, int _left, int _top, int _right, int _bottom) c
 {
 	readimagefile(photo.c_str(), _left, _top, _right, _bottom);
 }
+
+// void Display::playerBoard(){
+// }
 
 // void Display::text(int _x, int _y, char *textstring, int timerColor){
 // 	setcolor(timerColor);

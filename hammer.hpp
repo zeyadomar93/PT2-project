@@ -1,7 +1,6 @@
 #ifndef HAMMER_H
 #define HAMMER_H
 
-#include "point.hpp"
 #include "image.hpp"
 
 class Hammer{
@@ -19,7 +18,6 @@ class Hammer{
 
         void initState();
         void mouseInput(POINT &cp);
-        void displayHammer();
         bool smash();
 
         void setLeft(int value);

@@ -57,32 +57,29 @@ int main()
     // test scoreboard
     image.setHeight(80);
     image.setWidth(screenWidth/2);
-    image.read("images/board.jpg", "images/board_mask.jpg");
+
+    image.read("images/ui/board.jpg", "images/mask/board_mask.jpg");
     image.draw(screenWidth/4, 10);
+
+    // test score
+    score.displayScore();
+
+    // test timer = issue, cannot fit with hammer delay
+    // timer.initState(1, 30);
+    // timer.update();
     
     int x = screenWidth - 160;
     int y = screenHeight - hammer.getHeight() - 50;
-
-    // test score
-    // score.displayScore();
-
-    // test timer
-    // timer.initState(1, 30);
-    // timer.update();
 
     // test hammer
     hammer.setLeft(x);
     hammer.setTop(y);
     hammer.initState();
 
-    while(1){
-        hammer.mouseInput(cursor);
-        // delay(100);
-    }
+    while(life.display_life() > 0){
 
-	// while (!kbhit()){
-    //     //delay(10000);
-    // }
+        hammer.mouseInput(cursor);
+    }
 
     if (key == 0) 
         key = getch();

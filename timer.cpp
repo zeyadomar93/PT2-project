@@ -28,22 +28,19 @@ void Timer::displayTimer(int timerColor){
 }
 
 void Timer::update(){
+    delay(1000);
 
-    while(lives.display_life() > 0){
-        delay(1000);
-
-        if(min == 0 && sec == 0)
-            break;
-        
-        if(sec == 0){
-            min--;
-            sec = 60;
-        }
-
-        sec--;
-
-        changeColour();
+    if(min == 0 && sec == 0)
+        exit;
+    
+    if(sec == 0){
+        min--;
+        sec = 60;
     }
+
+    sec--;
+
+    changeColour();
 }
 
 void Timer::changeColour(){

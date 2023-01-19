@@ -12,6 +12,7 @@ void Score::initState(){
     // score[3] = {1, 3, 5};
 }
 
+// TODO: play sound, display +pluspoint near hammer
 int Score::update(){
     int _speed = hammer.getSpeed();
 

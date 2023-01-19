@@ -8,38 +8,26 @@ using namespace std;
 #include "hammer.hpp"
 #include "image.hpp"
 
-// dummy data for mole positions
-// should be array later
-int x, y;
-bool isMoleUp = false;
-
 Hammer::Hammer(bool _isHit, int _width, int _height, int _left, int _top, int _speed):
-        isHit(_isHit),  
-        width(_width), height(_height),
-        left(_left), top(_top), 
-        speed(_speed),
-        image(_width, _height){}
+    isHit(_isHit),  
+    width(_width), height(_height),
+    left(_left), top(_top), 
+    speed(_speed),
+    image(_width, _height){}
 
 void Hammer::initState(){
-    image.read("images/hammer.jpg", "images/hammer_mask.jpg");
+    image.read("images/hammer.jpg", "images/mask/hammer_mask.jpg");
     image.draw(left, top);
     delay(1000);
     image.undraw(left, top);
 }
 
+// TODO: set mouse cursor to invisible
 void Hammer::mouseInput(POINT &cp){
     GetCursorPos(&cp);
-    //image.read("images/hammer.jpg", "images/hammer_mask.jpg");
-    image.draw(cp.x, cp.y);
+    image.draw(cp.x - 35, cp.y - 65);
     delay(100);
-    image.undraw(cp.x, cp.y);
-}
-
-// make hammer follow cursor
-void Hammer::displayHammer(){
-    
-    // display.draw(photo.c_str(), 0, 0, cursorPosition.getX(), cursorPosition.getY());
-    // circle(cursorPosition.getX(), cursorPosition.getY(), 50);
+    image.undraw(cp.x - 35, cp.y - 65);
 }
 
 // check if hammer hits a mole or not
