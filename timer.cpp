@@ -18,13 +18,13 @@ void Timer::displayTimer(int timerColor){
     char buffer[10];
 
     setcolor(timerColor);
-    settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 5);
+    settextstyle(BOLD_FONT, HORIZ_DIR, 5);
     sprintf(buffer, "%d:%d", min, sec);
 
     if(sec < 10)
         sprintf(buffer, "%d:0%d", min, sec);
         
-    outtextxy(20, 700, buffer);
+    outtextxy(700, 35, buffer);
 }
 
 void Timer::update(){

@@ -30,10 +30,11 @@ int Score::update(){
 void Score::displayScore(){
     char buffer[10];
 
+    setbkcolor(COLOR(255, 156, 0));
     setcolor(WHITE);
-    settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 4);
+    settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 3.5);
     sprintf(buffer, "SCORE %d", totalScore);
-    outtextxy(20, 20, buffer);
+    outtextxy(400, 40, buffer);
 }
 
 int Score::getTotalScore() const{ return totalScore; }
