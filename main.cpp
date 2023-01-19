@@ -74,9 +74,6 @@ int main()
     hammer.setLeft(x);
     hammer.setTop(y);
     hammer.initState();
-    //delay(1000);
-
-    //hammer.mouseInput(cursor);
 
     while(1){
         hammer.mouseInput(cursor);
