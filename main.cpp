@@ -3,17 +3,14 @@
 #include "life.hpp"
 #include "timer.hpp"
 #include "score.hpp"
+#include "image.hpp"
+#include "hammer.hpp"
 
 // TODO: display menu
 void menu(int boxColor, int textColor){
     setcolor(boxColor);
     for(int i=0; i<10; i++)
         rectangle(55-1, 75-i, 240+i, 215+i);
-
-    setcolor(textColor);
-    settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 4);
-    outtextxy(240, 200, "PLAY GAME");
-
 }
 
 // TODO: display gameplay
@@ -44,10 +41,18 @@ int main()
     Display display;
     Timer timer;
     Score score;
+    Hammer hammer;
 
-	display.draw("images/highres2.jpg", 0, 0, 1380, 750);
-    // display.draw("images/sand-clock.png", 30, 0, 20, 20);
+    display.draw("images/background.jpg", 0, 0, screenWidth, screenHeight);
+    
+    int x = screenWidth - 160;
+    int y = screenHeight - hammer.getHeight() - 50;
 
+    // test hammer
+    hammer.setLeft(x);
+    hammer.setTop(y);
+    hammer.initState();
+    
     // test score
     score.displayScore();
 
