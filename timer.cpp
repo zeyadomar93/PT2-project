@@ -24,7 +24,7 @@ void Timer::displayTimer(int timerColor){
     if(sec < 10)
         sprintf(buffer, "%d:0%d", min, sec);
         
-    outtextxy(700, 35, buffer);
+    outtextxy(700, 30, buffer);
 }
 
 void Timer::update(){

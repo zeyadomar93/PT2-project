@@ -34,7 +34,7 @@ void Score::displayScore(){
     setcolor(WHITE);
     settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 3.5);
     sprintf(buffer, "SCORE %d", totalScore);
-    outtextxy(400, 40, buffer);
+    outtextxy(500, 38, buffer);
 }
 
 int Score::getTotalScore() const{ return totalScore; }

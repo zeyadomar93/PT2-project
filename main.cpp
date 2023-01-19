@@ -51,12 +51,11 @@ int main()
     Image image;
 
     display.draw("images/background.jpg", 0, 0, screenWidth, screenHeight);
-
+    
     // test scoreboard
     image.setHeight(80);
     image.setWidth(screenWidth/2);
-    image.read("images/box.jpg", "images/box_mask.jpg");
-    //image.setHeight(100);
+    image.read("images/board.jpg", "images/board_mask.jpg");
     image.draw(screenWidth/4, 10);
     
     int x = screenWidth - 160;
