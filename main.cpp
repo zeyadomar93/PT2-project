@@ -17,7 +17,7 @@ void menu(){
 
 // TODO: display gameplay
 void gameplay(){
-    Life life(3);
+    // Life life(3);
 
     // sample to display lives
     // TODO: corporate array to display it 
@@ -45,10 +45,12 @@ int main()
 	initwindow(screenWidth, screenHeight, "Group ERD");
 	
     Display display;
+    Life life(3);
     Timer timer;
     Score score;
     Hammer hammer;
     Image image;
+    POINT cursor;
 
     display.draw("images/background.jpg", 0, 0, screenWidth, screenHeight);
     
@@ -61,21 +63,29 @@ int main()
     int x = screenWidth - 160;
     int y = screenHeight - hammer.getHeight() - 50;
 
+    // test score
+    // score.displayScore();
+
+    // test timer
+    // timer.initState(1, 30);
+    // timer.update();
+
     // test hammer
     hammer.setLeft(x);
     hammer.setTop(y);
     hammer.initState();
-    
-    // test score
-    score.displayScore();
+    //delay(1000);
 
-    // test timer
-    timer.initState(1, 30);
-    timer.update();
+    //hammer.mouseInput(cursor);
 
-	while (!kbhit()){
-        delay(10000);
+    while(1){
+        hammer.mouseInput(cursor);
+        // delay(100);
     }
+
+	// while (!kbhit()){
+    //     //delay(10000);
+    // }
 
     if (key == 0) 
         key = getch();

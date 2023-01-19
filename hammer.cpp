@@ -1,6 +1,8 @@
 #include <iostream>
 #include <graphics.h>
 #include <string>
+#include <windows.h>
+
 using namespace std;
 
 #include "hammer.hpp"
@@ -21,17 +23,21 @@ Hammer::Hammer(bool _isHit, int _width, int _height, int _left, int _top, int _s
 void Hammer::initState(){
     image.read("images/hammer.jpg", "images/hammer_mask.jpg");
     image.draw(left, top);
-    // delay(2000);
-    // image.undraw(left, top);
+    delay(1000);
+    image.undraw(left, top);
 }
 
-void Hammer::mouseInput(Point &cp){
-    cursorPosition = cp;
+void Hammer::mouseInput(POINT &cp){
+    GetCursorPos(&cp);
+    //image.read("images/hammer.jpg", "images/hammer_mask.jpg");
+    image.draw(cp.x, cp.y);
+    delay(100);
+    image.undraw(cp.x, cp.y);
 }
 
 // make hammer follow cursor
 void Hammer::displayHammer(){
-    image.draw(cursorPosition.getX(), cursorPosition.getY());
+    
     // display.draw(photo.c_str(), 0, 0, cursorPosition.getX(), cursorPosition.getY());
     // circle(cursorPosition.getX(), cursorPosition.getY(), 50);
 }

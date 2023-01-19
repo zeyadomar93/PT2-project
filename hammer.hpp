@@ -9,7 +9,6 @@ class Hammer{
         bool isHit;
         int width, height, left, top, speed;
 
-        Point cursorPosition;
         Image image;
 
     public:
@@ -19,7 +18,7 @@ class Hammer{
                int _speed = 1);
 
         void initState();
-        void mouseInput(Point &cp);
+        void mouseInput(POINT &cp);
         void displayHammer();
         bool smash();
 
