@@ -1,14 +1,14 @@
 #ifndef HAMMER_H
 #define HAMMER_H
 
-#include "image.hpp"
+#include "display.hpp"
 
 class Hammer{
     private: 
         bool isHit;
         int width, height, left, top, speed;
 
-        Image image;
+        Display display;
 
     public:
         Hammer(bool _isHit = false, 

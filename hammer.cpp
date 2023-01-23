@@ -1,33 +1,33 @@
 #include <iostream>
-#include <graphics.h>
 #include <string>
+#include <graphics.h>
 #include <windows.h>
 
 using namespace std;
 
 #include "hammer.hpp"
-#include "image.hpp"
+#include "display.hpp"
 
 Hammer::Hammer(bool _isHit, int _width, int _height, int _left, int _top, int _speed):
     isHit(_isHit),  
     width(_width), height(_height),
     left(_left), top(_top), 
     speed(_speed),
-    image(_width, _height){}
+    display(_left, _top, _width, _height){}
 
 void Hammer::initState(){
-    image.read("images/hammer.jpg", "images/mask/hammer_mask.jpg");
-    image.draw(left, top);
-    delay(1000);
-    image.undraw(left, top);
+    display.readMask("images/hammer.jpg", "images/mask/hammer_mask.jpg");
+    display.drawMask(left, top);
+    delay(100);
+    display.undrawMask(left, top);
 }
 
 // TODO: set mouse cursor to invisible
 void Hammer::mouseInput(POINT &cp){
     GetCursorPos(&cp);
-    image.draw(cp.x - 35, cp.y - 65);
+    display.drawMask(cp.x - 35, cp.y - 65);
     delay(100);
-    image.undraw(cp.x - 35, cp.y - 65);
+    display.undrawMask(cp.x - 35, cp.y - 65);
 }
 
 // check if hammer hits a mole or not

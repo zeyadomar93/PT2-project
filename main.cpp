@@ -4,15 +4,14 @@
 #include "life.hpp"
 #include "timer.hpp"
 #include "score.hpp"
-#include "image.hpp"
 #include "hammer.hpp"
+#include "scoreboard.hpp"
 
 // TODO: display menu
 void menu(){
     // TODO: design background for menu and place here
     // display.draw("images/background.jpg", 0, 0, screenWidth, screenHeight);
     // image.draw("images/btn_play.jpg", "images/btn_play_mask.jpg");
-
 }
 
 // TODO: display gameplay
@@ -46,27 +45,29 @@ int main()
 	
     Display display;
     Life life(3);
-    Timer timer;
-    Score score;
+    // Timer timer;
+    // Score score;
     Hammer hammer;
-    Image image;
     POINT cursor;
+    Scoreboard scoreboard;
 
-    display.draw("images/background.jpg", 0, 0, screenWidth, screenHeight);
+    display.drawNormal("images/background.jpg", 0, 0, screenWidth, screenHeight);
     
     // test scoreboard
-    image.setHeight(80);
-    image.setWidth(screenWidth/2);
+    // display.setHeight(80);
+    // display.setWidth(screenWidth/2);
 
-    image.read("images/ui/board.jpg", "images/mask/board_mask.jpg");
-    image.draw(screenWidth/4, 10);
+    // display.readMask("images/ui/board.jpg", "images/mask/board_mask.jpg");
+    // display.drawMask(screenWidth/4, 10);
 
     // test score
-    score.displayScore();
+    // score.displayScore();
 
     // test timer = issue, cannot fit with hammer delay
     // timer.initState(1, 30);
-    // timer.update();
+
+    // test scoreboard
+    // scoreboard.initState(1, 30, screenWidth, screenHeight);
     
     int x = screenWidth - 160;
     int y = screenHeight - hammer.getHeight() - 50;
@@ -78,6 +79,8 @@ int main()
 
     while(life.display_life() > 0){
 
+        // timer.update();
+        // scoreboard.update();
         hammer.mouseInput(cursor);
     }
 
