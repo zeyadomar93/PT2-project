@@ -4,6 +4,7 @@
 #include "life.hpp"
 #include "score.hpp"
 #include "timer.hpp"
+#include "display.hpp"
 
 class Scoreboard{
     private:

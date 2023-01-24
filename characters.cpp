@@ -1,17 +1,16 @@
+#include <iostream>
+
+using namespace std;
 
 #include "characters.hpp"
 
-Characters::Characters(int _speed, int _num[]){}
+Characters::Characters(int _speed){}
+Characters::~Characters(){ cout << "Delete characters" << endl; }
 
+void Characters::initState(){};
+void Characters::isMouseClicked(int x, int y){};
+
+// TODO: Revise whether need to set to 0 like .hpp
 int Characters::getSpeed() const { return speed; }
-int Characters::getNum() const { return num[10]; }
-
-void Characters::setSpeed(int value){
-    speed = value;
-}
-
-// TODO: Use pointer?
-// void Characters::setNum(int value[]){
-//     num = value;
-// }
+void Characters::setSpeed(int value){ speed = value; }
 

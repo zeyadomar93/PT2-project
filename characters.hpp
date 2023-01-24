@@ -7,15 +7,17 @@ using namespace std;
 class Characters{
     protected:
         int speed;
-        int num[10];
+
     public:
-        Characters(int speed = 0, int num[10] = {});
+        Characters(int speed = 0);
+        virtual ~Characters();
 
-        int getSpeed() const;
-        int getNum() const;
+        virtual void initState() = 0;
+        virtual void isMouseClicked(int x, int y) = 0;
 
-        void setSpeed(int value);
-        // void setNum(int value[]);
+        virtual int getSpeed() const = 0;
+        virtual void setSpeed(int value) = 0;
+
 };
 
 #endif

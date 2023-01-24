@@ -35,6 +35,13 @@ void play_handler(int x, int y){
         play_clicked = true;
 }
 
+// Characters *characters[COUNT];
+
+// void createMoles(){
+//     for(int i=0; i<5; i++)
+//         characters[i] = new Mole();
+// }
+
 int main()
 {
 	int screenWidth = getmaxwidth();
@@ -50,6 +57,7 @@ int main()
     Hammer hammer;
     POINT cursor;
     Scoreboard scoreboard;
+    // Characters *objects[10];
 
     display.drawNormal("images/background.jpg", 0, 0, screenWidth, screenHeight);
     
