@@ -16,12 +16,12 @@ void menu(){
 
 // TODO: display gameplay
 void gameplay(){
-    // Life life(3);
-
+    Life life(3);
+Display display;
     // sample to display lives
     // TODO: corporate array to display it 
-    // for(int i=0; i<life.display_life(); i++)
-    //     display.draw("images/heart.png",0,200,200,0);
+    for(int i=0; i<life.display_life(); i++)
+        display.drawNormal("images/ui/heart.jpg",0,200,200,0);
 }
 
 // TODO: diplay gameover
@@ -57,16 +57,17 @@ int main()
     Hammer hammer;
     POINT cursor;
     Scoreboard scoreboard;
+    Mole mole;
     // Characters *objects[10];
 
     display.drawNormal("images/background.jpg", 0, 0, screenWidth, screenHeight);
     
     // test scoreboard
-    // display.setHeight(80);
-    // display.setWidth(screenWidth/2);
+    display.setHeight(80);
+    display.setWidth(screenWidth/2);
 
-    // display.readMask("images/ui/board.jpg", "images/mask/board_mask.jpg");
-    // display.drawMask(screenWidth/4, 10);
+    display.readMask("images/ui/board.jpg", "images/mask/board_mask.jpg");
+    display.drawMask(screenWidth/4, 10);
 
     // test score
     // score.displayScore();
@@ -75,7 +76,7 @@ int main()
     // timer.initState(1, 30);
 
     // test scoreboard
-    // scoreboard.initState(1, 30, screenWidth, screenHeight);
+    scoreboard.initState(1, 30, screenWidth, screenHeight);
     
     int x = screenWidth - 160;
     int y = screenHeight - hammer.getHeight() - 50;
@@ -88,7 +89,7 @@ int main()
     while(life.display_life() > 0){
 
         // timer.update();
-        // scoreboard.update();
+        scoreboard.update();
         hammer.mouseInput(cursor);
     }
 
