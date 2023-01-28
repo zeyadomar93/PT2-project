@@ -1,33 +1,34 @@
 #ifndef HAMMER_H
 #define HAMMER_H
 
-#include "image.hpp"
+#include "display.hpp"
+#include "characters.hpp"
 
-class Hammer{
+class Hammer : public Characters{
     private: 
-        bool isHit;
         int width, height, left, top, speed;
 
-        Image image;
+        Display display;
 
     public:
-        Hammer(bool _isHit = false, 
-               int _width = 100, int _height = 100,
+        Hammer(int _width = 100, int _height = 100,
                int _left = 0, int _top = 0,
                int _speed = 1);
+        ~Hammer();
 
         void initState();
         void mouseInput(POINT &cp);
-        bool smash();
-
-        void setLeft(int value);
-        void setTop(int value);
-        void setSpeed(int value);
+        void isMouseClicked(int x, int y);
 
         int getHeight() const;
         int getLeft() const;
         int getTop() const;
         int getSpeed() const;
+        // int getNum() const;
+
+        void setLeft(int value);
+        void setTop(int value);
+        void setSpeed(int value);
 };
 
 #endif

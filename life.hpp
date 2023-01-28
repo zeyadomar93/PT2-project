@@ -11,7 +11,6 @@ public:
     Life(int initial_life);
     void decrease_life();
     int display_life();
-
 };
 
 #endif

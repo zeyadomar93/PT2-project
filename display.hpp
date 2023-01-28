@@ -1,3 +1,4 @@
+#pragma once
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
@@ -5,27 +6,30 @@
 
 using namespace std;
 
-#include "point.hpp"
-
-// #include "timer.hpp"
-// #include "score.hpp"
-// #include "life.hpp"
-// #include "characters.hpp"
+typedef char *ImageData;
 
 class Display
 {
 private:
 	int x, y;		   // The center coordinates. For specifing the location of the ball
 	int width, height; // For the dimension purposes
-	int color;		   // For appearance purposes
 
-	// Timer _timer;
-	// Score _score;
-	// Life _life;
-	// Characters _char;
+	ImageData image, mask, background;
+
+    int getMemorySize() const;
+    ImageData loadImage(string file);
+    void snapBackground(int left, int top);
 
 public:
-	Display(int _x = 0, int _y = 0, int _width = 0, int _height = 0, int _color = 0);
+	Display(int _x = 0, int _y = 0, int _width = 0, int _height = 0);
+	~Display();
+
+	void drawNormal(string photo, int _left, int _top, int _right, int _bottom) const;
+	
+	void readMask(string imageFile, string maskFile);
+    void freeMask();
+	void drawMask(int left, int top);
+	void undrawMask(int left, int top);
 
 	int getX() const; // The left most x value of the room
 	int getY() const; // The top most y value of the room
@@ -40,13 +44,6 @@ public:
 	void setWidth(int value);
 	void setHeight(int value);
 	void setSize(int _width, int _height);
-	void setColor(int value);
-	void set(int _x, int _y, int _width, int _height, int _color);
-	void draw(string photo, int _left, int _top, int _right, int _bottom) const;
-
-	void playerBoard();
-
-	Point getCenter() const;
 };
 
 #endif

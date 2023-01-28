@@ -2,6 +2,8 @@
 #include <string>
 #include <cstring>
 #include <graphics.h>
+#include <stdlib.h>
+
 using namespace std;
 
 #include "timer.hpp"
@@ -31,7 +33,7 @@ void Timer::update(){
     delay(1000);
 
     if(min == 0 && sec == 0)
-        exit;
+        return;
     
     if(sec == 0){
         min--;

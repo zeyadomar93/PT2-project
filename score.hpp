@@ -3,14 +3,14 @@
 
 // #define MAX_SCORE 7
 
-#include "hammer.hpp"
+#include "mole.hpp"
 
 class Score{
     private:
         int score[3] = {1, 3, 5};
         int totalScore;
 
-        Hammer hammer;
+        Mole mole;
 
     public:
         Score(int _totalScore = 0);
