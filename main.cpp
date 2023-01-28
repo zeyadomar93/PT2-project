@@ -64,7 +64,7 @@ int main()
     Characters *objects[10];
 
     display.drawNormal("images/background.jpg", 0, 0, screenWidth, screenHeight);
-
+    display.drawNormal("images/mole.jpg", 80, 400, 200, 600);
     // test scoreboard
     display.setHeight(80);
     display.setWidth(screenWidth/2);
