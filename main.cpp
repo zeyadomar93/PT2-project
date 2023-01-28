@@ -6,6 +6,7 @@
 #include "score.hpp"
 #include "hammer.hpp"
 #include "scoreboard.hpp"
+#include "characters.hpp"
 
 // TODO: display menu
 void menu(){
@@ -25,8 +26,10 @@ Display display;
 }
 
 // TODO: diplay gameover
-void gameover(){
-
+void gameover(Life life){
+if(life.display_life()<=0){
+    return;
+}
 }
 
 bool play_clicked = false;
@@ -35,12 +38,12 @@ void play_handler(int x, int y){
         play_clicked = true;
 }
 
-// Characters *characters[COUNT];
+Characters *characters[5];
 
-// void createMoles(){
-//     for(int i=0; i<5; i++)
-//         characters[i] = new Mole();
-// }
+void createMoles(){
+    for(int i=0; i<5; i++)
+        characters[i] = new Mole();
+}
 
 int main()
 {
@@ -52,21 +55,22 @@ int main()
 	
     Display display;
     Life life(3);
-    // Timer timer;
-    // Score score;
+    Timer timer;
+    Score score;
     Hammer hammer;
     POINT cursor;
     Scoreboard scoreboard;
     Mole mole;
-    // Characters *objects[10];
+    Characters *objects[10];
 
     display.drawNormal("images/background.jpg", 0, 0, screenWidth, screenHeight);
-    
+
     // test scoreboard
     display.setHeight(80);
     display.setWidth(screenWidth/2);
 
     display.readMask("images/ui/board.jpg", "images/mask/board_mask.jpg");
+    // display.readMask("images/ui/m_mouse.jpg", "images/mask/m_mouse_mask.jpg");
     display.drawMask(screenWidth/4, 10);
 
     // test score
@@ -88,7 +92,7 @@ int main()
 
     while(life.display_life() > 0){
 
-        // timer.update();
+        timer.update();
         scoreboard.update();
         hammer.mouseInput(cursor);
     }
