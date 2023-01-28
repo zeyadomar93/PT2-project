@@ -7,7 +7,9 @@ using namespace std;
 Characters::Characters(int _speed){}
 Characters::~Characters(){ cout << "Delete characters" << endl; }
 
-void Characters::initState(){};
+void Characters::initState(){
+    speed=0;
+};
 void Characters::isMouseClicked(int x, int y){};
 
 // TODO: Revise whether need to set to 0 like .hpp

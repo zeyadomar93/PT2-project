@@ -62,9 +62,17 @@ int main()
     Scoreboard scoreboard;
     Mole mole;
     Characters *objects[10];
-
+    //problematic code
+// for(int i=0;i<10;i++){
+//     objects[i]->initState();
+// }
     display.drawNormal("images/background.jpg", 0, 0, screenWidth, screenHeight);
-    display.drawNormal("images/mole.jpg", 80, 400, 200, 600);
+for(int i=0;i<10;i++){
+
+    display.drawNormal("images/mole.jpg", 100, 400, 200, 600);
+    display.drawNormal("images/mole.jpg", 400, 400, 200, 600);
+    display.drawNormal("images/mole.jpg", 800, 400, 200, 600);
+}
     // test scoreboard
     display.setHeight(80);
     display.setWidth(screenWidth/2);
