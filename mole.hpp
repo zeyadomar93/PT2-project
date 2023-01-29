@@ -5,25 +5,33 @@ using namespace std;
 
 #include "characters.hpp"
 
-class Mole : public Characters{
-    private:
-        // int radius;
-        bool isHit;
-    public:
-        Mole();
-        ~Mole();
+class Mole : public Characters
+{
+private:
+    int radius;
+    int posX;
+    int posY;
+    bool isHit;
+    bool isVisible;
 
-        void initState();
-        void updatePosition();
-        void hide();
-        void show();
-        void isMouseClicked(int x, int y);
+public:
+    Mole();
+    ~Mole();
+bool getIsVisible() const;
+        void setIsVisible(bool value);
+    void initState();
+    void updatePosition();
+    void hide();
+    void show();
+    void isMouseClicked(int x, int y);
+    bool checkHit(int mouseX, int mouseY);
 
-        bool getIsHit() const;
-        int getSpeed() const;
+    bool getIsHit() const;
+    int getRadius() const;
+    int getSpeed() const;
 
-        void setSpeed(int value);
+    void setRadius(int value);
+    void setSpeed(int value);
 };
 
 #endif
-

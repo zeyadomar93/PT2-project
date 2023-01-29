@@ -9,50 +9,56 @@
 #include "characters.hpp"
 
 // TODO: display menu
-void menu(){
+void menu()
+{
     // TODO: design background for menu and place here
     // display.draw("images/background.jpg", 0, 0, screenWidth, screenHeight);
     // image.draw("images/btn_play.jpg", "images/btn_play_mask.jpg");
 }
 
 // TODO: display gameplay
-void gameplay(){
+void gameplay()
+{
     Life life(3);
-Display display;
+    Display display;
     // sample to display lives
-    // TODO: corporate array to display it 
-    for(int i=0; i<life.display_life(); i++)
-        display.drawNormal("images/ui/heart.jpg",0,200,200,0);
+    // TODO: corporate array to display it
+    for (int i = 0; i < life.display_life(); i++)
+        display.drawNormal("images/ui/heart.jpg", 0, 200, 200, 0);
 }
 
 // TODO: diplay gameover
-void gameover(Life life){
-if(life.display_life()<=0){
-    return;
-}
+void gameover(Life life)
+{
+    if (life.display_life() <= 0)
+    {
+        return;
+    }
 }
 
 bool play_clicked = false;
-void play_handler(int x, int y){
-    if (getpixel(x,y) == RED)
+void play_handler(int x, int y)
+{
+    if (getpixel(x, y) == RED)
         play_clicked = true;
 }
 
 Characters *characters[5];
 
-void createMoles(){
-    for(int i=0; i<5; i++)
+void createMoles()
+{
+    for (int i = 0; i < 5; i++)
         characters[i] = new Mole();
 }
 
 int main()
 {
-	int screenWidth = getmaxwidth();
-	int screenHeight = getmaxheight();
+    int screenWidth = getmaxwidth();
+    int screenHeight = getmaxheight();
     int key;
 
-	initwindow(screenWidth, screenHeight, "Group ERD");
-	
+    initwindow(screenWidth, screenHeight, "Group ERD");
+
     Display display;
     Life life(3);
     Timer timer;
@@ -62,24 +68,33 @@ int main()
     Scoreboard scoreboard;
     Mole mole;
     Characters *objects[10];
-    //problematic code
-// for(int i=0;i<10;i++){
-//     objects[i]->initState();
-// }
+    // problematic code
+    // for(int i=0;i<10;i++){
+    //     objects[i]->initState();
+    // }
     display.drawNormal("images/background.jpg", 0, 0, screenWidth, screenHeight);
-for(int i=0;i<10;i++){
+    for (int i = 0; i < 10; i++)
+    {
 
-    display.drawNormal("images/mole.jpg", 100, 400, 200, 600);
-    display.drawNormal("images/mole.jpg", 400, 400, 200, 600);
-    display.drawNormal("images/mole.jpg", 800, 400, 200, 600);
-}
+        display.drawNormal("images/mole.jpg", 100, 400, 300, 600);
+        display.drawNormal("images/mole.jpg", 400, 400, 200, 600);
+        display.drawNormal("images/mole.jpg", 800, 400, 600, 600);
+    }
+        for (int i = 0; i < 3; i++)
+    {
+
+        display.drawNormal("images/ui/heart.jpg", 0, 30, 20, 10);
+        display.drawNormal("images/ui/heart.jpg", 50, 30, 70, 10);
+        display.drawNormal("images/ui/heart.jpg", 100, 30, 120, 10);
+
+    }
     // test scoreboard
     display.setHeight(80);
-    display.setWidth(screenWidth/2);
+    display.setWidth(screenWidth / 2);
 
     display.readMask("images/ui/board.jpg", "images/mask/board_mask.jpg");
     // display.readMask("images/ui/m_mouse.jpg", "images/mask/m_mouse_mask.jpg");
-    display.drawMask(screenWidth/4, 10);
+    display.drawMask(screenWidth / 4, 10);
 
     // test score
     // score.displayScore();
@@ -89,7 +104,7 @@ for(int i=0;i<10;i++){
 
     // test scoreboard
     scoreboard.initState(1, 30, screenWidth, screenHeight);
-    
+
     int x = screenWidth - 160;
     int y = screenHeight - hammer.getHeight() - 50;
 
@@ -98,18 +113,20 @@ for(int i=0;i<10;i++){
     hammer.setTop(y);
     hammer.initState();
 
-    while(life.display_life() > 0){
+    while (life.display_life() > 0)
+    {
 
         timer.update();
         scoreboard.update();
         hammer.mouseInput(cursor);
     }
 
-    if (key == 0) 
+    if (key == 0)
         key = getch();
-    
-    switch (toupper(key)){
-        case 'q':
+
+    switch (toupper(key))
+    {
+    case 'q':
         break;
     }
 }
