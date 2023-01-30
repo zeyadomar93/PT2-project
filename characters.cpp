@@ -4,9 +4,11 @@ using namespace std;
 
 #include "characters.hpp"
 
-Characters::Characters(int _speed) : speed(_speed){}
+Characters::Characters(int _width, int _height, int _left, int _top) : 
+    width(_width), height(_height), 
+    left(_left), top(_top){}
+
 Characters::~Characters(){ cout << "Delete characters" << endl; }
 
-int Characters::getSpeed() const { return speed; }
-void Characters::setSpeed(int value){ speed = value; }
-
+void Characters::setLeft(int value){ left = value; }
+void Characters::setTop(int value){ top = value; }

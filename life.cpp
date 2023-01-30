@@ -21,6 +21,8 @@ int Life::display_life(int left)
     display.setSize(25, 25);
     display.readMask("images/ui/heart.jpg", "images/mask/heart_mask.jpg");
     display.drawMask(left, 35);
+
+    return 0;
 }
 
 // method to display the current value of the life attribute

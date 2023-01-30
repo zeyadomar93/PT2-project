@@ -1,7 +1,6 @@
 #include <graphics.h>
 
 #include "score.hpp"
-#include "mole.hpp"
 
 Score::Score(int _totalScore):totalScore(_totalScore){
     // score[3] = nullptr;
@@ -14,18 +13,18 @@ void Score::initState(){
 
 // TODO: play sound, display +pluspoint near hammer
 int Score::update(){
-    int _speed = mole.getSpeed();
+    // if(mole.getIsHit() == false)
+    //     return totalScore -= score[1];
+    // else{
+    //     if(_speed >= 5)
+    //         return totalScore += score[0];
+    //     else if(_speed >= 3 && _speed < 5)
+    //         return totalScore += score[1];
+    //     else
+    //         return totalScore += score[2];
+    // }
 
-    if(mole.getIsHit() == false)
-        return totalScore -= score[1];
-    else{
-        if(_speed >= 5)
-            return totalScore += score[0];
-        else if(_speed >= 3 && _speed < 5)
-            return totalScore += score[1];
-        else
-            return totalScore += score[2];
-    }
+    return 0;
 }
 
 void Score::displayScore(){

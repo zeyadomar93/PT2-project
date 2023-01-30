@@ -6,26 +6,17 @@
 
 class Hammer : public Characters{
     private: 
-        int width, height, left, top, speed;
-
         Display display;
-
+        POINT cp;
+        
     public:
         Hammer(int _width = 100, int _height = 100,
-               int _left = 0, int _top = 0,
-               int _speed = 1);
+               int _left = 0, int _top = 0);
         ~Hammer();
 
         void initState();
-        void mouseInput(POINT &cp);
+        void putObject();
         void isMouseClicked(int x, int y);
-
-        int getHeight() const;
-        int getLeft() const;
-        int getTop() const;
-
-        void setLeft(int value);
-        void setTop(int value);
 };
 
 #endif

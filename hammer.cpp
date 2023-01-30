@@ -9,10 +9,8 @@ using namespace std;
 #include "display.hpp"
 #include "characters.hpp"
 
-Hammer::Hammer(int _width, int _height, int _left, int _top, int _speed):
-    width(_width), height(_height),
-    left(_left), top(_top), 
-    Characters(_speed),
+Hammer::Hammer(int _width, int _height, int _left, int _top):
+    Characters(_width, _height, _left, _top),
     display(_left, _top, _width, _height){}
 
 Hammer::~Hammer(){ cout << "Destroy Hammer" << endl; }
@@ -25,7 +23,7 @@ void Hammer::initState(){
 }
 
 // TODO: set mouse cursor to invisible
-void Hammer::mouseInput(POINT &cp){
+void Hammer::putObject(){
     GetCursorPos(&cp);
     display.drawMask(cp.x - 35, cp.y - 65);
     delay(100);
@@ -36,10 +34,3 @@ void Hammer::mouseInput(POINT &cp){
 void Hammer::isMouseClicked(int x, int y){
     
 }
-
-void Hammer::setLeft(int value) { left = value; }
-void Hammer::setTop(int value) { top = value; }
-
-int Hammer::getHeight() const { return height; }
-int Hammer::getLeft() const { return left; }
-int Hammer::getTop() const { return top; }

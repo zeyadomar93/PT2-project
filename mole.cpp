@@ -5,6 +5,7 @@
 using namespace std;
 
 #include "mole.hpp"
+#include "characters.hpp"
 
 // Mole::Mole() : Characters(){
 //     // Initialize random number generator
@@ -58,40 +59,38 @@ using namespace std;
 //     return isHit;
 // }
 
-// int Mole::getSpeed() const{ return speed; }
-
-// void Mole::setSpeed(int value) { speed = value; }
-Mole::Mole() : Characters(speed)
-{
+Mole::Mole(int _width, int _height, int _left, int _top, int _speed) : 
+    Characters(_width, _height, _left, _top),
+    display(_left, _top, _width, _height),
+    speed(_speed){
     // Initialize the mole's starting position and radius
-    posX = 0;
-    posY = 0;
-    radius = 20;
-    isHit = false;
+    // posX = 0;
+    // posY = 0;
+    // radius = 20;
+    // isHit = false;
 }
 
-Mole::~Mole()
-{
-    cout << "Destroy Mole" << endl;
+Mole::~Mole(){ cout << "Destroy Mole" << endl; }
+
+void Mole::putObject(){
+    display.readMask("images/m_mouse.jpg", "images/mask/m_mouse_mask.jpg");
+    display.drawMask(left, top);
 }
 
-void Mole::setIsVisible(bool value)
-{
-    isVisible = value;
-}
+void Mole::setIsVisible(bool value) { isVisible = value; }
 
 void Mole::initState()
 {
     // Set the mole's starting position and visibility
-    posX = rand() % 600;
-    posY = rand() % 400;
+    left = rand() % 600;
+    top = rand() % 400;
     isVisible = false;
 }
 
 void Mole::updatePosition()
 {
     // Update the mole's position based on its speed
-    posX += speed;
+    left += speed;
 }
 
 void Mole::hide()
@@ -109,7 +108,7 @@ void Mole::show()
 void Mole::isMouseClicked(int x, int y)
 {
     // Check if the mouse click is within the mole's radius
-    if (sqrt((x - posX) * (x - posX) + (y - posY) * (y - posY)) <= radius)
+    if (sqrt((x - left) * (x - left) + (y - top) * (y - top)) <= radius)
     {
         isHit = true;
     }
@@ -141,8 +140,8 @@ bool Mole::checkIsHit(int mouseX, int mouseY)
     }
 }
 
-int Mole::getRadius() const { return radius; }
-void Mole::setRadius(int value) { radius = value; }
+int Mole::getSpeed() const{ return speed; }
+void Mole::setSpeed(int value) { speed = value; }
 
 bool Mole::getIsVisible() const
 {
@@ -153,4 +152,5 @@ bool Mole::getIsHit() const
 {
     return isHit;
 }
+
 

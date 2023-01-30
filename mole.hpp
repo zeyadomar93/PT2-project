@@ -4,21 +4,24 @@
 using namespace std;
 
 #include "characters.hpp"
+#include "display.hpp"
 
 class Mole : public Characters
 {
 private:
+    int speed;
     int radius;
-    int posX;
-    int posY;
     bool isHit;
     bool isVisible;
 
+    Display display;
+
 public:
-    Mole();
+    Mole(int _width, int _height, int _left, int _top, int _speed);
     ~Mole();
     
     void initState();
+    void putObject();
     void updatePosition();
     void hide();
     void show();
@@ -27,10 +30,11 @@ public:
 
     bool getIsVisible() const;
     bool getIsHit() const;
-    int getRadius() const;
+    int getSpeed() const;
 
+    void setSpeed(int value);
     void setIsVisible(bool value);
-    void setRadius(int value);
+
 };
 
 #endif
