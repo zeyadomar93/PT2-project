@@ -7,11 +7,12 @@ using namespace std;
 
 #include "hammer.hpp"
 #include "display.hpp"
+#include "characters.hpp"
 
 Hammer::Hammer(int _width, int _height, int _left, int _top, int _speed):
     width(_width), height(_height),
     left(_left), top(_top), 
-    speed(_speed),
+    Characters(_speed),
     display(_left, _top, _width, _height){}
 
 Hammer::~Hammer(){ cout << "Destroy Hammer" << endl; }
@@ -19,7 +20,7 @@ Hammer::~Hammer(){ cout << "Destroy Hammer" << endl; }
 void Hammer::initState(){
     display.readMask("images/hammer.jpg", "images/mask/hammer_mask.jpg");
     display.drawMask(left, top);
-    delay(100);
+    delay(1000);
     display.undrawMask(left, top);
 }
 
@@ -38,9 +39,7 @@ void Hammer::isMouseClicked(int x, int y){
 
 void Hammer::setLeft(int value) { left = value; }
 void Hammer::setTop(int value) { top = value; }
-void Hammer::setSpeed(int value) { speed = value; }
 
 int Hammer::getHeight() const { return height; }
 int Hammer::getLeft() const { return left; }
 int Hammer::getTop() const { return top; }
-int Hammer::getSpeed() const{ return speed; }

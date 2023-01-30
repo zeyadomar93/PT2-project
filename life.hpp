@@ -1,16 +1,21 @@
 #ifndef LIFE_H
 #define LIFE_H
 
+#include "display.hpp"
+
 class Life
 {
 private:
     int life;
     int initial_life = 3;
 
+    Display display;
+
 public:
     Life(int initial_life);
     void decrease_life();
-    int display_life();
+    int display_life(int left);
+    int getLife();
 };
 
 #endif

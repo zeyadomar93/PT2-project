@@ -8,6 +8,8 @@
 #include "scoreboard.hpp"
 #include "characters.hpp"
 
+#define OBJECTS 6
+
 // TODO: display menu
 void menu()
 {
@@ -17,30 +19,47 @@ void menu()
 }
 
 // TODO: display gameplay
-void gameplay()
+void gameplay(int screenWidth, int screenHeight)
 {
-    Life life(3);
     Display display;
-    // sample to display lives
-    // TODO: corporate array to display it
-    for (int i = 0; i < life.display_life(); i++)
-        display.drawNormal("images/ui/heart.jpg", 0, 200, 200, 0);
-}
+    Life life(3);
+    Timer timer;
+    Score score;
+    Scoreboard scoreboard;
 
-// TODO: diplay gameover
-void gameover(Life life)
-{
-    if (life.display_life() <= 0)
+    Characters *characters[OBJECTS];
+    Characters *clickedObject = nullptr;
+
+    display.drawNormal("images/background.jpg", 0, 0, screenWidth, screenHeight);
+    scoreboard.initState(screenWidth, screenHeight);
+
+    Life lives[3] = {
+        life.display_life(screenWidth/2 + 180),
+        life.display_life(screenWidth/2 + 210),
+        life.display_life(screenWidth/2 + 240)
+    };
+
+    for(int i=1; i<OBJECTS; i++){
+        characters[i] = new Mole();
+    }
+
+    while (life.getLife() > 0)
     {
-        return;
+        characters[0] = new Hammer();
+
+        for(int i=0; i<3; i++){
+            lives[i];
+        }
     }
 }
 
-bool play_clicked = false;
-void play_handler(int x, int y)
+// TODO: display gameover
+void gameover(Life life)
 {
-    if (getpixel(x, y) == RED)
-        play_clicked = true;
+    if (life.getLife() <= 0)
+    {
+        return;
+    }
 }
 
 Characters *characters[5];
@@ -48,6 +67,7 @@ Characters *characters[5];
 void createMoles()
 {
     for (int i = 0; i < 5; i++)
+    
         characters[i] = new Mole();
 }
 
@@ -57,69 +77,31 @@ int main()
     int screenHeight = getmaxheight();
     int key;
 
-    initwindow(screenWidth, screenHeight, "Group ERD");
+    initwindow(screenWidth, screenHeight, "Smash n Pause");
 
     Display display;
-    Life life(3);
-    Timer timer;
-    Score score;
-    Hammer hammer;
     POINT cursor;
-    Scoreboard scoreboard;
-    Mole mole;
-    Characters *objects[10];
-    // problematic code
-    // for(int i=0;i<10;i++){
-    //     objects[i]->initState();
+
+    // // test timer = issue, cannot fit with hammer delay
+    // // timer.initState(1, 30);
+
+    // int x = screenWidth - 160;
+    // int y = screenHeight - hammer.getHeight() - 50;
+
+    // // test hammer
+    // hammer.setLeft(x);
+    // hammer.setTop(y);
+    // hammer.initState();
+
+    // while (life.getLife() > 0)
+    // {
+
+    //     // timer.update();
+    //     // scoreboard.update();
+    //     hammer.mouseInput(cursor);
     // }
-    display.drawNormal("images/background.jpg", 0, 0, screenWidth, screenHeight);
-    for (int i = 0; i < 10; i++)
-    {
 
-        display.drawNormal("images/mole.jpg", 100, 400, 300, 600);
-        display.drawNormal("images/mole.jpg", 400, 400, 200, 600);
-        display.drawNormal("images/mole.jpg", 800, 400, 600, 600);
-    }
-        for (int i = 0; i < 3; i++)
-    {
-
-        display.drawNormal("images/ui/heart.jpg", 0, 30, 20, 10);
-        display.drawNormal("images/ui/heart.jpg", 50, 30, 70, 10);
-        display.drawNormal("images/ui/heart.jpg", 100, 30, 120, 10);
-
-    }
-    // test scoreboard
-    display.setHeight(80);
-    display.setWidth(screenWidth / 2);
-
-    display.readMask("images/ui/board.jpg", "images/mask/board_mask.jpg");
-    // display.readMask("images/ui/m_mouse.jpg", "images/mask/m_mouse_mask.jpg");
-    display.drawMask(screenWidth / 4, 10);
-
-    // test score
-    // score.displayScore();
-
-    // test timer = issue, cannot fit with hammer delay
-    // timer.initState(1, 30);
-
-    // test scoreboard
-    scoreboard.initState(1, 30, screenWidth, screenHeight);
-
-    int x = screenWidth - 160;
-    int y = screenHeight - hammer.getHeight() - 50;
-
-    // test hammer
-    hammer.setLeft(x);
-    hammer.setTop(y);
-    hammer.initState();
-
-    while (life.display_life() > 0)
-    {
-
-        timer.update();
-        scoreboard.update();
-        hammer.mouseInput(cursor);
-    }
+    gameplay(screenWidth, screenHeight);
 
     if (key == 0)
         key = getch();

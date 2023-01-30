@@ -23,12 +23,9 @@ class Hammer : public Characters{
         int getHeight() const;
         int getLeft() const;
         int getTop() const;
-        int getSpeed() const;
-        // int getNum() const;
 
         void setLeft(int value);
         void setTop(int value);
-        void setSpeed(int value);
 };
 
 #endif

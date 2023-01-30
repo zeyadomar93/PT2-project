@@ -9,14 +9,14 @@ class Characters{
         int speed;
 
     public:
-        Characters(int speed = 0);
+        Characters(int _speed = 0);
         virtual ~Characters();
 
         virtual void initState() = 0;
         virtual void isMouseClicked(int x, int y) = 0;
 
-        virtual int getSpeed() const = 0;
-        virtual void setSpeed(int value) = 0;
+        virtual int getSpeed() const;
+        virtual void setSpeed(int value);
 
 };
 

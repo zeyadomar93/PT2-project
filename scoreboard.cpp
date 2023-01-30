@@ -6,9 +6,7 @@ using namespace std;
 
 Scoreboard::Scoreboard(){}
 
-void Scoreboard::initState(int min, int sec, int screenWidth, int screenHeight){
-    timer.initState(min, sec);
-
+void Scoreboard::initState(int screenWidth, int screenHeight){
     display.setHeight(80);
     display.setWidth(screenWidth/2);
 
@@ -17,7 +15,7 @@ void Scoreboard::initState(int min, int sec, int screenWidth, int screenHeight){
 }
 
 void Scoreboard::update(){
-    life.display_life();
+    //life.display_life();
     score.displayScore();
     timer.update();
 }

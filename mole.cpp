@@ -74,15 +74,12 @@ Mole::~Mole()
 {
     cout << "Destroy Mole" << endl;
 }
-bool Mole::getIsVisible() const
-{
-    return isVisible;
-}
 
 void Mole::setIsVisible(bool value)
 {
     isVisible = value;
 }
+
 void Mole::initState()
 {
     // Set the mole's starting position and visibility
@@ -121,14 +118,8 @@ void Mole::isMouseClicked(int x, int y)
         isHit = false;
     }
 }
-int Mole::getRadius() const { return radius; }
-void Mole::setRadius(int value) { radius = value; }
 
-bool Mole::getIsHit() const
-{
-    return isHit;
-}
-bool Mole::checkHit(int mouseX, int mouseY)
+bool Mole::checkIsHit(int mouseX, int mouseY)
 {
     // Get the center coordinates of the mole
     int centerX = mouseX+ radius;
@@ -150,6 +141,16 @@ bool Mole::checkHit(int mouseX, int mouseY)
     }
 }
 
-int Mole::getSpeed() const { return speed; }
+int Mole::getRadius() const { return radius; }
+void Mole::setRadius(int value) { radius = value; }
 
-void Mole::setSpeed(int value) { speed = value; }
+bool Mole::getIsVisible() const
+{
+    return isVisible;
+}
+
+bool Mole::getIsHit() const
+{
+    return isHit;
+}
+

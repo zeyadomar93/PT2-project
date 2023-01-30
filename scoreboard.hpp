@@ -16,7 +16,7 @@ class Scoreboard{
 
     public:
         Scoreboard();
-        void initState(int min, int sec, int screenWidth, int screenHeight);
+        void initState(int screenWidth, int screenHeight);
         void update();
 };
 

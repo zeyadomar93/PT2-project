@@ -17,21 +17,20 @@ private:
 public:
     Mole();
     ~Mole();
-bool getIsVisible() const;
-        void setIsVisible(bool value);
+    
     void initState();
     void updatePosition();
     void hide();
     void show();
     void isMouseClicked(int x, int y);
-    bool checkHit(int mouseX, int mouseY);
+    bool checkIsHit(int mouseX, int mouseY);
 
+    bool getIsVisible() const;
     bool getIsHit() const;
     int getRadius() const;
-    int getSpeed() const;
 
+    void setIsVisible(bool value);
     void setRadius(int value);
-    void setSpeed(int value);
 };
 
 #endif
