@@ -94,7 +94,7 @@ void gameplay(int screenWidth, int screenHeight){
             if(ismouseclick(WM_LBUTTONDOWN)){
 
                 cout << "mouse clicked ";
-                // GetAsyncKeyState(VK_LBUTTON);
+                
                 getmouseclick(WM_LBUTTONDOWN, posX, posY);
                 if(characters[i]->isMouseClicked(posX, posY)){
 
