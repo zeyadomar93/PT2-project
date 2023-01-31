@@ -35,7 +35,7 @@ void Timer::displayTimer(int timerColor){
 }
 
 bool Timer::update(){
-    // delay(1000);
+    delay(1000);
 
     if(min == 0 && sec == 0)
         return false;

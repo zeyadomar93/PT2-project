@@ -16,7 +16,8 @@ class Hammer : public Characters{
 
         void initState();
         void putObject();
-        void isMouseClicked(int x, int y);
+        void modifySpeed(int value);
+        bool isMouseClicked(int x, int y);
         void stop();
 };
 

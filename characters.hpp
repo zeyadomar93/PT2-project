@@ -12,20 +12,22 @@ using namespace std;
 class Characters{
     protected:
         int width, height, left, top;
+        int speed[5] = {};
 
     public:
         Characters(int _width, int _height, int _left, int _top);
         virtual ~Characters();
 
         virtual void initState() = 0;
-        virtual void isMouseClicked(int x, int y) = 0;
+        virtual bool isMouseClicked(int x, int y) = 0;
         virtual void putObject() = 0;
         virtual void stop() = 0;
 
-        // virtual int getSpeed() = 0;
-
         virtual void setLeft(int value);
         virtual void setTop(int value);
+
+        virtual int getSpeed() const;
+        virtual void modifySpeed(int value) = 0;
 };
 
 #endif

@@ -12,20 +12,20 @@ void Score::initState(){
 }
 
 // TODO: play sound, display +pluspoint near hammer
-int Score::update(Mole* m){
+int Score::update(Characters* m){
 
     int checkSpeed = m->getSpeed();
 
-    if(m->getIsHit() == false)
-        return totalScore -= score[1];
-    else{
-        if(checkSpeed >= 5)
-            return totalScore += score[0];
-        else if(checkSpeed >= 3 && checkSpeed < 5)
-            return totalScore += score[1];
-        else
-            return totalScore += score[2];
-    }
+    // if(m->getIsHit() == false)
+    //     return totalScore -= score[1];
+    // else{
+    //     if(checkSpeed >= 5)
+    //         return totalScore += score[0];
+    //     else if(checkSpeed >= 3 && checkSpeed < 5)
+    //         return totalScore += score[1];
+    //     else
+    //         return totalScore += score[2];
+    // }
 
     return 0;
 }

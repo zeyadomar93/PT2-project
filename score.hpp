@@ -1,7 +1,7 @@
 #ifndef SCORE_H
 #define SCORE_H
 
-#include "mole.hpp"
+#include "characters.hpp"
 
 class Score{
     private:
@@ -11,7 +11,7 @@ class Score{
     public:
         Score(int _totalScore = 0);
         void initState();
-        int update(Mole *m);
+        int update(Characters *m);
         int getTotalScore() const;
         void displayScore();
 };

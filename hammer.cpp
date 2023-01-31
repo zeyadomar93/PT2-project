@@ -30,9 +30,13 @@ void Hammer::putObject(){
     display.undrawMask(cp.x - 35, cp.y - 65);
 }
 
+void Hammer::modifySpeed(int value){
+
+}
+
 // TODO: Rotate hammer
-void Hammer::isMouseClicked(int x, int y){
-    
+bool Hammer::isMouseClicked(int x, int y){
+    return false;
 }
 
 void Hammer::stop(){

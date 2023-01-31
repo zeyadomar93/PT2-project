@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <windows.h>
+#include <iostream>
 
 #include "display.hpp"
 #include "life.hpp"
@@ -23,6 +24,16 @@ void menu(int screenWidth, int screenHeight)
 
 }
 
+// TODO: display gameover
+void gameover(int screenWidth, int screenHeight, Life life){
+
+    Display display;
+
+    if (life.getLife() <= 0){
+        display.drawNormal("images/ui/third_bg.jpg", 0, 0, screenWidth, screenHeight);
+    }
+}
+
 // TODO: display gameplay
 void gameplay(int screenWidth, int screenHeight){
 
@@ -39,6 +50,9 @@ void gameplay(int screenWidth, int screenHeight){
 
     int x = screenWidth - 160;
     int y = screenHeight - 150;
+
+    int posX = 0; 
+    int posY = 0;
 
     display.drawNormal("images/ui/second_bg.jpg", 0, 0, screenWidth, screenHeight);
     scoreboard.initState(screenWidth, screenHeight);
@@ -58,11 +72,11 @@ void gameplay(int screenWidth, int screenHeight){
 
     for(int i=1; i<OBJECTS; i++){
 
-        int randomX = 100 + rand() % screenWidth;
-        int randomY = 300 + rand() % screenHeight;
-        int speed = rand() % 5;
+        int randomX = 1 + rand() % (screenWidth - 150) + 50;
+        int randomY = 100 + rand() % screenHeight - 50;
+        // int speed = rand() % 5;
 
-        characters[i] = new Mole(60, 60, randomX, randomY, speed);
+        characters[i] = new Mole(60, 60, randomX, randomY);
     }  
 
     for(int i=0; i<3; i++){
@@ -74,9 +88,23 @@ void gameplay(int screenWidth, int screenHeight){
 
         for(int i=1; i<OBJECTS; i++){
             characters[i]->putObject();
-            // characters[i]->isMouseClicked();
-        }
 
+            // score.update(characters[i]);
+
+            if(ismouseclick(WM_LBUTTONDOWN)){
+
+                cout << "mouse clicked ";
+                // GetAsyncKeyState(VK_LBUTTON);
+                getmouseclick(WM_LBUTTONDOWN, posX, posY);
+                if(characters[i]->isMouseClicked(posX, posY)){
+
+                    cout << "mole clicked ";
+                    int speed = rand() % 5;
+                    characters[i]->modifySpeed(speed);
+                }
+
+            }
+        }
         if (life.getLife() > 3){
             timer.update();
         }
@@ -93,16 +121,6 @@ void gameplay(int screenWidth, int screenHeight){
     
 }
 
-// TODO: display gameover
-void gameover(int screenWidth, int screenHeight, Life life){
-
-    Display display;
-
-    if (life.getLife() <= 0){
-        display.drawNormal("images/ui/third_bg.jpg", 0, 0, screenWidth, screenHeight);
-    }
-}
-
 bool checkMouseClick(
     int mouseX, int mouseY, 
     int _firstBoundaryX, int _secondBoundaryX, 
@@ -116,13 +134,14 @@ bool checkMouseClick(
 
 int main()
 {
-    int screenWidth = getmaxwidth();
-    int screenHeight = getmaxheight();
+    int screenWidth = getmaxwidth() - 100;
+    int screenHeight = getmaxheight() - 100;
     int key, mouseX, mouseY;
 
     initwindow(screenWidth, screenHeight, "Smash n Pause");
 
     Display display;
+    Life life(0);
 
     // display.drawNormal("images/ui/first_bg.jpg", 0, 0, screenWidth, screenHeight);
  
@@ -130,7 +149,7 @@ int main()
     // display.readMask("images/ui/play_btn.jpg", "images/mask/play_btn_mask.jpg");
     // display.drawMask(screenWidth/3 + 40, screenHeight/2);
     gameplay(screenWidth, screenHeight);
-
+    // gameover(screenWidth, screenHeight, life);
 
     while(key != 27){
         if(kbhit){
