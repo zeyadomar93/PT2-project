@@ -12,17 +12,20 @@ void Score::initState(){
 }
 
 // TODO: play sound, display +pluspoint near hammer
-int Score::update(){
-    // if(mole.getIsHit() == false)
-    //     return totalScore -= score[1];
-    // else{
-    //     if(_speed >= 5)
-    //         return totalScore += score[0];
-    //     else if(_speed >= 3 && _speed < 5)
-    //         return totalScore += score[1];
-    //     else
-    //         return totalScore += score[2];
-    // }
+int Score::update(Mole* m){
+
+    int checkSpeed = m->getSpeed();
+
+    if(m->getIsHit() == false)
+        return totalScore -= score[1];
+    else{
+        if(checkSpeed >= 5)
+            return totalScore += score[0];
+        else if(checkSpeed >= 3 && checkSpeed < 5)
+            return totalScore += score[1];
+        else
+            return totalScore += score[2];
+    }
 
     return 0;
 }
@@ -34,7 +37,7 @@ void Score::displayScore(){
     setcolor(WHITE);
     settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 3.5);
     sprintf(buffer, "SCORE %d", totalScore);
-    outtextxy(500, 38, buffer);
+    outtextxy(500, 36, buffer);
 }
 
 int Score::getTotalScore() const{ return totalScore; }

@@ -20,6 +20,9 @@ class Characters{
         virtual void initState() = 0;
         virtual void isMouseClicked(int x, int y) = 0;
         virtual void putObject() = 0;
+        virtual void stop() = 0;
+
+        // virtual int getSpeed() = 0;
 
         virtual void setLeft(int value);
         virtual void setTop(int value);

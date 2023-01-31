@@ -22,11 +22,11 @@ public:
     
     void initState();
     void putObject();
-    void updatePosition();
+    void changeSpeed();
     void hide();
     void show();
-    void isMouseClicked(int x, int y);
-    bool checkIsHit(int mouseX, int mouseY);
+    void isMouseClicked(int mouseX, int mouseY);
+    void stop();
 
     bool getIsVisible() const;
     bool getIsHit() const;

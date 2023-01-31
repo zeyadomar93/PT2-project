@@ -40,21 +40,6 @@ using namespace std;
 //     isVisible = true;
 // }
 
-// void Mole::isMouseClicked(int x, int y){
-//     // Check if the mouse click is within the bounds of the mole
-//     int xMin = this->x - 50;
-//     int xMax = this->x + 50;
-//     int yMin = this->y - 50;
-//     int yMax = this->y + 50;
-
-//     if(x >= xMin && x <= xMax && y >= yMin && y <= yMax){
-//         isHit = true;
-//     }
-//     else{
-//         isHit = false;
-//     }
-// }
-
 // bool Mole::getIsHit() const{
 //     return isHit;
 // }
@@ -87,7 +72,7 @@ void Mole::initState()
     isVisible = false;
 }
 
-void Mole::updatePosition()
+void Mole::changeSpeed()
 {
     // Update the mole's position based on its speed
     left += speed;
@@ -96,7 +81,9 @@ void Mole::updatePosition()
 void Mole::hide()
 {
     // Hide the mole
-    isVisible = false;
+    // isVisible = false;
+
+    display.undrawMask(left, top);
 }
 
 void Mole::show()
@@ -105,39 +92,23 @@ void Mole::show()
     isVisible = true;
 }
 
-void Mole::isMouseClicked(int x, int y)
-{
-    // Check if the mouse click is within the mole's radius
-    if (sqrt((x - left) * (x - left) + (y - top) * (y - top)) <= radius)
-    {
+void Mole::isMouseClicked(int mouseX, int mouseY){
+    // Check if the mouse click is within the bounds of the mole
+    int xMin = width - 60;
+    int xMax = width + 60;
+    int yMin = height - 60;
+    int yMax = height + 60;
+
+    if((mouseX >= xMin && mouseX <= xMax) && (mouseY >= yMin && mouseY <= yMax)){
         isHit = true;
     }
-    else
-    {
+    else{
         isHit = false;
     }
 }
 
-bool Mole::checkIsHit(int mouseX, int mouseY)
-{
-    // Get the center coordinates of the mole
-    int centerX = mouseX+ radius;
-    int centerY = mouseY + radius;
-
-    // Calculate the distance between the mouse click and the center of the mole
-    int xDiff = mouseX - centerX;
-    int yDiff = mouseY - centerY;
-    int distance = sqrt((xDiff * xDiff) + (yDiff * yDiff));
-
-    // If the distance is less than the radius, the mouse click is inside the mole
-    if (distance < radius)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+void Mole::stop(){
+    display.freeMask();
 }
 
 int Mole::getSpeed() const{ return speed; }

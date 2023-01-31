@@ -13,6 +13,8 @@
 #include "scoreboard.hpp"
 #include "characters.hpp"
 
+using namespace std;
+
 #define OBJECTS 8
 
 // TODO: display menu
@@ -40,6 +42,10 @@ void gameplay(int screenWidth, int screenHeight){
 
     display.drawNormal("images/ui/second_bg.jpg", 0, 0, screenWidth, screenHeight);
     scoreboard.initState(screenWidth, screenHeight);
+    score.initState();
+    timer.initState(1, 30);
+
+    score.displayScore();
 
     Life lives[3] = {
         life.display_life(screenWidth/2 + 180),
@@ -48,28 +54,43 @@ void gameplay(int screenWidth, int screenHeight){
     };
 
     characters[0] = new Hammer(100, 100, x, y);
-    characters[0]->initState();
-
-    int randomX = 100 + rand() % screenWidth;
-	int randomY = 300 + rand() % screenHeight;
-    int speed = rand() % 5; 
+    characters[0]->initState(); 
 
     for(int i=1; i<OBJECTS; i++){
-        characters[i] = new Mole(60, 60, randomX, randomY, speed);
-        //characters[i]->putObject();
-    }   
 
-    while (life.getLife() > 0){
+        int randomX = 100 + rand() % screenWidth;
+        int randomY = 300 + rand() % screenHeight;
+        int speed = rand() % 5;
+
+        characters[i] = new Mole(60, 60, randomX, randomY, speed);
+    }  
+
+    for(int i=0; i<3; i++){
+        lives[i];
+    } 
+
+    while(timer.update() == true){
         characters[0]->putObject();
 
         for(int i=1; i<OBJECTS; i++){
             characters[i]->putObject();
-        } 
-
-        for(int i=0; i<3; i++){
-            lives[i];
+            // characters[i]->isMouseClicked();
         }
+
+        if (life.getLife() > 3){
+            timer.update();
+        }
+
+        if(timer.update() == false){
+            characters[0]->stop();
+
+            for(int i=1; i<OBJECTS; i++)
+                characters[i]->stop(); 
+            break;
+        }
+    
     }
+    
 }
 
 // TODO: display gameover
@@ -103,39 +124,39 @@ int main()
 
     Display display;
 
-    display.drawNormal("images/ui/first_bg.jpg", 0, 0, screenWidth, screenHeight);
+    // display.drawNormal("images/ui/first_bg.jpg", 0, 0, screenWidth, screenHeight);
  
-    display.setSize(400, 180);
-    display.readMask("images/ui/play_btn.jpg", "images/mask/play_btn_mask.jpg");
-    display.drawMask(screenWidth/3 + 40, screenHeight/2);
+    // display.setSize(400, 180);
+    // display.readMask("images/ui/play_btn.jpg", "images/mask/play_btn_mask.jpg");
+    // display.drawMask(screenWidth/3 + 40, screenHeight/2);
+    gameplay(screenWidth, screenHeight);
+
 
     while(key != 27){
         if(kbhit){
             key = getch();
-
         }
-        
-        if(ismouseclick(WM_LBUTTONDOWN)){
-			getmouseclick(WM_LBUTTONDOWN, mouseX, mouseY);
-            int firstBoundaryX = display.getX();
-            int secondBoundaryX = firstBoundaryX + display.getWidth();
-            int firstBoundaryY = display.getY();
-            int secondBoundaryY = firstBoundaryY + display.getHeight();
 
-            if(checkMouseClick(
-                mouseX, mouseY, 
-                firstBoundaryX, secondBoundaryX, 
-                firstBoundaryY, secondBoundaryY)){
+        // if(ismouseclick(WM_LBUTTONDOWN)){
+		// 	getmouseclick(WM_LBUTTONDOWN, mouseX, mouseY);
+        //     int firstBoundaryX = display.getX();
+        //     int secondBoundaryX = firstBoundaryX + display.getWidth();
+        //     int firstBoundaryY = display.getY();
+        //     int secondBoundaryY = firstBoundaryY + display.getHeight();
 
-                delay(1000);
-                // display.freeMask();
-                gameplay(screenWidth, screenHeight);
-                break;
-            }
-		}
+        //     if(checkMouseClick(
+        //         mouseX, mouseY, 
+        //         firstBoundaryX, secondBoundaryX, 
+        //         firstBoundaryY, secondBoundaryY)){
+
+        //         delay(1000);
+        //         // display.freeMask();
+        //         gameplay(screenWidth, screenHeight);
+        //         break;
+        //     }
+		// }
 		
         // menu(screenWidth, screenHeight);
-        // gameplay(screenWidth, screenHeight);
         // gameover(screenWidth, screenHeight, life);
     }
     return 0;

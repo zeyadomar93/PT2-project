@@ -34,3 +34,7 @@ void Hammer::putObject(){
 void Hammer::isMouseClicked(int x, int y){
     
 }
+
+void Hammer::stop(){
+    display.drawMask(left, top);
+}
