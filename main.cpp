@@ -112,6 +112,7 @@ bool checkMouseClick(
         (mouseY >= _firstBoundaryY && mouseY <= _secondBoundaryY)){
         return true;
     }
+    return false;
 }
 
 int main()
