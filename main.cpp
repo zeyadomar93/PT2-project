@@ -18,13 +18,23 @@ using namespace std;
 
 #define OBJECTS 8
 
-// TODO: display menu
-void menu(int screenWidth, int screenHeight)
-{
+Display menu(int screenWidth, int screenHeight){
+    Display display;
 
+    display.drawNormal("images/ui/first_bg.jpg", 0, 0, screenWidth, screenHeight);
+ 
+    display.setSize(400, 180);
+    display.setX(screenWidth/3 + 40);
+    display.setY(screenHeight/2);
+
+    display.readMask("images/ui/play_btn.jpg", "images/mask/play_btn_mask.jpg");
+    display.drawMask(display.getX(), display.getY());
+    // display.drawMask(screenWidth/3 + 40, screenHeight/2);
+
+    return display;
 }
 
-// TODO: display gameover
+// Display gameover
 void gameover(int screenWidth, int screenHeight, Life life){
 
     Display display;
@@ -34,7 +44,7 @@ void gameover(int screenWidth, int screenHeight, Life life){
     }
 }
 
-// TODO: display gameplay
+// Display gameplay
 void gameplay(int screenWidth, int screenHeight){
 
     srand(time(NULL));
@@ -94,7 +104,7 @@ void gameplay(int screenWidth, int screenHeight){
             if(ismouseclick(WM_LBUTTONDOWN)){
 
                 cout << "mouse clicked ";
-                
+
                 getmouseclick(WM_LBUTTONDOWN, posX, posY);
                 if(characters[i]->isMouseClicked(posX, posY)){
 
@@ -105,6 +115,7 @@ void gameplay(int screenWidth, int screenHeight){
 
             }
         }
+        
         if (life.getLife() > 3){
             timer.update();
         }
@@ -129,54 +140,52 @@ bool checkMouseClick(
     if((mouseX >= _firstBoundaryX && mouseX <= _secondBoundaryX) && 
         (mouseY >= _firstBoundaryY && mouseY <= _secondBoundaryY)){
         return true;
+    }else{
+        return false;
     }
 }
 
 int main()
 {
-    int screenWidth = getmaxwidth() - 100;
-    int screenHeight = getmaxheight() - 100;
-    int key, mouseX, mouseY;
+    int screenWidth = getmaxwidth();
+    int screenHeight = getmaxheight();
+    int key;
+    int mouseX = 0; 
+    int mouseY = 0;
 
     initwindow(screenWidth, screenHeight, "Smash n Pause");
 
-    Display display;
-    Life life(0);
-
-    // display.drawNormal("images/ui/first_bg.jpg", 0, 0, screenWidth, screenHeight);
- 
-    // display.setSize(400, 180);
-    // display.readMask("images/ui/play_btn.jpg", "images/mask/play_btn_mask.jpg");
-    // display.drawMask(screenWidth/3 + 40, screenHeight/2);
-    gameplay(screenWidth, screenHeight);
-    // gameover(screenWidth, screenHeight, life);
+    Display display = menu(screenWidth, screenHeight);
 
     while(key != 27){
-        if(kbhit){
+        if(kbhit()){
             key = getch();
         }
 
-        // if(ismouseclick(WM_LBUTTONDOWN)){
-		// 	getmouseclick(WM_LBUTTONDOWN, mouseX, mouseY);
-        //     int firstBoundaryX = display.getX();
-        //     int secondBoundaryX = firstBoundaryX + display.getWidth();
-        //     int firstBoundaryY = display.getY();
-        //     int secondBoundaryY = firstBoundaryY + display.getHeight();
+        if(ismouseclick(WM_LBUTTONDOWN)){
 
-        //     if(checkMouseClick(
-        //         mouseX, mouseY, 
-        //         firstBoundaryX, secondBoundaryX, 
-        //         firstBoundaryY, secondBoundaryY)){
+            // cout << "" << display.getX();
+            cout << "hello ";
 
-        //         delay(1000);
-        //         // display.freeMask();
-        //         gameplay(screenWidth, screenHeight);
-        //         break;
-        //     }
-		// }
-		
-        // menu(screenWidth, screenHeight);
-        // gameover(screenWidth, screenHeight, life);
+			getmouseclick(WM_LBUTTONDOWN, mouseX, mouseY);
+            int firstBoundaryX = display.getX();
+            int secondBoundaryX = firstBoundaryX + display.getWidth();
+            int firstBoundaryY = display.getY();
+            int secondBoundaryY = firstBoundaryY + display.getHeight();
+
+            if(checkMouseClick(
+                mouseX, mouseY, 
+                firstBoundaryX, secondBoundaryX, 
+                firstBoundaryY, secondBoundaryY)){
+
+                    cout << "clicked";
+
+                delay(1000);
+                // display.freeMask();
+                gameplay(screenWidth, screenHeight);
+                break;
+            }
+		}
     }
     return 0;
 }

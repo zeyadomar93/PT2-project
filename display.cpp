@@ -24,8 +24,8 @@ void Display::freeMask(){
         delete[](ImageData) background;
 }
 
-void Display::drawNormal(string photo, int _left, int _top, int _right, int _bottom) const{
-	readimagefile(photo.c_str(), _left, _top, _right, _bottom);
+void Display::drawNormal(string photo, int _left, int _top, int _width, int _height) const{
+	readimagefile(photo.c_str(), _left, _top, _width, _height);
 }
 
 void Display::readMask(string imageFile, string maskFile){
@@ -53,17 +53,17 @@ void Display::snapBackground(int left, int top){
     getimage(left, top, left + width, top + height, background);
 }
 
-void Display::drawMask(int left, int top){
-    snapBackground(left, top);
-    putimage(left, top, mask, OR_PUT);
+void Display::drawMask(int _x, int _y){
+    snapBackground(_x, _y);
+    putimage(_x, _y, mask, OR_PUT);
 
-    putimage(left, top, image, AND_PUT);
+    putimage(_x, _y, image, AND_PUT);
 }
 
-void Display::undrawMask(int left, int top){
+void Display::undrawMask(int _x, int _y){
     if (!background)
         return;
-    putimage(left, top, background, COPY_PUT);
+    putimage(_x, _y, background, COPY_PUT);
 }
 
 int Display::getX() const { return x; }

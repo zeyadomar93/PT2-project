@@ -9,9 +9,9 @@ using namespace std;
 class Mole : public Characters
 {
 private:
-    int radius;
     bool isHit;
-    bool isVisible;
+    int storeLeft[5];
+    int storeTop[5];
 
     Display display;
 
@@ -24,11 +24,7 @@ public:
     void modifySpeed(int value);
     bool isMouseClicked(int mouseX, int mouseY);
     void stop();
-
-    bool getIsVisible() const;
     bool getIsHit() const;
-
-    void setIsVisible(bool value);
 
 };
 

@@ -11,11 +11,9 @@ using namespace std;
 Mole::Mole(int _width, int _height, int _left, int _top) : 
     Characters(_width, _height, _left, _top),
     display(_left, _top, _width, _height){
-    // Initialize the mole's starting position and radius
-    // posX = 0;
-    // posY = 0;
-    // radius = 20;
-    // isHit = false;
+    storeLeft[5] = {_left};
+    storeTop[5] = {_top};
+    isHit = false;
 }
 
 Mole::~Mole(){ cout << "Destroy Mole" << endl; }
@@ -41,8 +39,14 @@ void Mole::modifySpeed(int value)
     // for(int i=0; i<5; i++)
     //     speed[i] = value;
 
-    // for (int sleep=0; sleep<speed[sleep]*1000; sleep++);
+    // left = rand() % 600;
+    // top = rand() % 400;
+
     display.undrawMask(left, top);
+    // for (int sleep=0; sleep<speed[sleep]*1000; sleep++);
+    display.drawMask(left, top);
+
+    cout << "undraw";
 
 }
 
@@ -64,13 +68,6 @@ bool Mole::isMouseClicked(int mouseX, int mouseY){
 void Mole::stop(){
     display.undrawMask(left, top);
     // display.freeMask();
-}
-
-void Mole::setIsVisible(bool value) { isVisible = value; }
-
-bool Mole::getIsVisible() const
-{
-    return isVisible;
 }
 
 bool Mole::getIsHit() const
