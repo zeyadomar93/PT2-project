@@ -79,6 +79,7 @@ void gameplay(int screenWidth, int screenHeight){
 
     characters[0] = new Hammer(100, 100, x, y);
     characters[0]->initState(); 
+    delay(1000);
 
     for(int i=1; i<OBJECTS; i++){
 

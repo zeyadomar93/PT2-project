@@ -8,11 +8,15 @@
 
 using namespace std;
 
+#include "display.hpp"
+
 // TODO: Revise on pointers and arrays
 class Characters{
     protected:
         int width, height, left, top;
         int speed[5] = {};
+
+        Display display;
 
     public:
         Characters(int _width, int _height, int _left, int _top);

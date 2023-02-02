@@ -1,17 +1,14 @@
 #include <iostream>
 #include <string>
 #include <graphics.h>
-#include <windows.h>
 
 using namespace std;
 
 #include "hammer.hpp"
-#include "display.hpp"
 #include "characters.hpp"
 
 Hammer::Hammer(int _width, int _height, int _left, int _top):
-    Characters(_width, _height, _left, _top),
-    display(_left, _top, _width, _height){}
+    Characters(_width, _height, _left, _top){}
 
 Hammer::~Hammer(){ cout << "Destroy Hammer" << endl; }
 
@@ -24,10 +21,9 @@ void Hammer::initState(){
 
 // TODO: set mouse cursor to invisible
 void Hammer::putObject(){
-    GetCursorPos(&cp);
-    display.drawMask(cp.x - 35, cp.y - 65);
+    display.drawMask(mousex() - 35, mousey() - 45);
     delay(100);
-    display.undrawMask(cp.x - 35, cp.y - 65);
+    display.undrawMask(mousex() - 35, mousey() - 45);
 }
 
 void Hammer::modifySpeed(int value){

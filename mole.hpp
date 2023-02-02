@@ -13,8 +13,6 @@ private:
     int storeLeft[5];
     int storeTop[5];
 
-    Display display;
-
 public:
     Mole(int _width, int _height, int _left, int _top);
     ~Mole();

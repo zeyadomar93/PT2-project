@@ -4,11 +4,7 @@
 #include "display.hpp"
 #include "characters.hpp"
 
-class Hammer : public Characters{
-    private: 
-        Display display;
-        POINT cp;
-        
+class Hammer : public Characters{     
     public:
         Hammer(int _width = 100, int _height = 100,
                int _left = 0, int _top = 0);

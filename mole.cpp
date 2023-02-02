@@ -9,8 +9,7 @@ using namespace std;
 #include "characters.hpp"
 
 Mole::Mole(int _width, int _height, int _left, int _top) : 
-    Characters(_width, _height, _left, _top),
-    display(_left, _top, _width, _height){
+    Characters(_width, _height, _left, _top){
     storeLeft[5] = {_left};
     storeTop[5] = {_top};
     isHit = false;
@@ -67,7 +66,6 @@ bool Mole::isMouseClicked(int mouseX, int mouseY){
 
 void Mole::stop(){
     display.undrawMask(left, top);
-    // display.freeMask();
 }
 
 bool Mole::getIsHit() const

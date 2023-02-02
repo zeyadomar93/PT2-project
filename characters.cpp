@@ -6,7 +6,8 @@ using namespace std;
 
 Characters::Characters(int _width, int _height, int _left, int _top) : 
     width(_width), height(_height), 
-    left(_left), top(_top){
+    left(_left), top(_top),
+    display(_left, _top, _width, _height){
         speed[5] = {};
     }
 
