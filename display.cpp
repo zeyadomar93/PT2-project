@@ -24,7 +24,7 @@ void Display::freeMask(){
         delete[](ImageData) background;
 }
 
-void Display::drawNormal(string photo, int _left, int _top, int _width, int _height) const{
+void Display::drawNormal(string photo, int _left, int _top, int _width, int _height){
 	readimagefile(photo.c_str(), _left, _top, _width, _height);
 }
 

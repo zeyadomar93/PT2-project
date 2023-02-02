@@ -10,9 +10,9 @@ class Scoreboard{
     private:
         Display display;
 
-        Life life = 3;
-        Score score;
-        Timer timer;
+        // Life life = 3;
+        // Score score;
+        // Timer timer;
 
     public:
         Scoreboard();

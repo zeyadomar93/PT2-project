@@ -16,8 +16,8 @@ void Scoreboard::initState(int screenWidth, int screenHeight){
 
 void Scoreboard::update(){
     //life.display_life();
-    score.displayScore();
-    timer.update();
+    // score.displayScore();
+    // timer.update();
 }
 
 // TODO: Function to get life for better access

@@ -12,7 +12,7 @@ using namespace std;
 #include "timer.hpp"
 
 Timer::Timer(int _min, int _sec, double _elapsedTime, int _timerColor):
-    min(_min), sec(_sec), elapsedTime(_elapsedTime), timerColor(_timerColor), lives(3){}
+    min(_min), sec(_sec), elapsedTime(_elapsedTime), timerColor(_timerColor){}
 
 void Timer::initState(int _min, int _sec){
     min = _min;

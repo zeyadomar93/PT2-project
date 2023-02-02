@@ -2,7 +2,6 @@
 #include <cmath>
 #include <stdlib.h>
 #include <time.h>
-#include <windows.h>
 #include <iostream>
 
 #include "display.hpp"
@@ -29,7 +28,6 @@ Display menu(int screenWidth, int screenHeight){
 
     display.readMask("images/ui/play_btn.jpg", "images/mask/play_btn_mask.jpg");
     display.drawMask(display.getX(), display.getY());
-    // display.drawMask(screenWidth/3 + 40, screenHeight/2);
 
     return display;
 }
@@ -164,23 +162,15 @@ int main()
         }
 
         if(ismouseclick(WM_LBUTTONDOWN)){
-
-            // cout << "" << display.getX();
-            cout << "hello ";
-
 			getmouseclick(WM_LBUTTONDOWN, mouseX, mouseY);
             int firstBoundaryX = display.getX();
             int secondBoundaryX = firstBoundaryX + display.getWidth();
             int firstBoundaryY = display.getY();
             int secondBoundaryY = firstBoundaryY + display.getHeight();
 
-            if(checkMouseClick(
-                mouseX, mouseY, 
+            if(checkMouseClick(mouseX, mouseY, 
                 firstBoundaryX, secondBoundaryX, 
                 firstBoundaryY, secondBoundaryY)){
-
-                    cout << "clicked";
-
                 delay(1000);
                 // display.freeMask();
                 gameplay(screenWidth, screenHeight);

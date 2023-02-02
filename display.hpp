@@ -24,7 +24,7 @@ public:
 	Display(int _x = 0, int _y = 0, int _width = 0, int _height = 0);
 	~Display();
 
-	void drawNormal(string photo, int _left, int _top, int _right, int _bottom) const;
+	void drawNormal(string photo, int _left, int _top, int _right, int _bottom);
 	
 	void readMask(string imageFile, string maskFile);
     void freeMask();
